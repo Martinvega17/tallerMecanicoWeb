@@ -1,0 +1,147 @@
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+
+function VehiculoForm({ setDatosVehiculo }) {
+    const [vehiculo, setVehiculo] = useState('');
+    const [placas, setPlacas] = useState('');
+    const [modelo, setModelo] = useState('');
+    const [marca, setMarca] = useState('');
+    const [capacidadton, setCapacidadTon] = useState('');
+    const [pasajeros, setPasajeros] = useState('');
+    const [motor, setMotor] = useState('');
+    const [cvu, setCvu] = useState('');
+
+    const handleVehiculoChange = (event) => {
+        setVehiculo(event.target.value);
+        setDatosVehiculo((prevData) => ({ ...prevData, vehiculo: event.target.value }));
+    };
+
+    const handlePlacasChange = (event) => {
+        setPlacas(event.target.value);
+        setDatosVehiculo((prevData) => ({ ...prevData, placas: event.target.value }));
+    };
+
+    const handleModeloChange = (event) => {
+        setModelo(event.target.value);
+        setDatosVehiculo((prevData) => ({ ...prevData, modelo: event.target.value }));
+    };
+
+    const handleMarcaChange = (event) => {
+        setMarca(event.target.value);
+        setDatosVehiculo((prevData) => ({ ...prevData, marca: event.target.value }));
+    };
+
+    const handleCapacidadTonChange = (event) => {
+        setCapacidadTon(event.target.value);
+        setDatosVehiculo((prevData) => ({ ...prevData, capacidadton: event.target.value }));
+    };
+
+    const handlePasajerosChange = (event) => {
+        setPasajeros(event.target.value);
+        setDatosVehiculo((prevData) => ({ ...prevData, pasajeros: event.target.value }));
+    };
+
+    const handleMotorChange = (event) => {
+        setMotor(event.target.value);
+        setDatosVehiculo((prevData) => ({ ...prevData, motor: event.target.value }));
+    };
+
+    const handleCvuChange = (event) => {
+        setCvu(event.target.value);
+        setDatosVehiculo((prevData) => ({ ...prevData, cvu: event.target.value }));
+    };
+
+    return (
+        <div className="grid grid-cols-2 gap-4 mx-4">
+            <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">Datos del Vehículo</h2>
+
+            <div>
+                <form>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">Vehículo:</label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 block w-full border rounded-md"
+                            value={vehiculo}
+                            onChange={handleVehiculoChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">Modelo:</label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 block w-full border rounded-md"
+                            value={modelo}
+                            onChange={handleModeloChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">Capacidad en Toneladas:</label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 block w-full border rounded-md"
+                            value={capacidadton}
+                            onChange={handleCapacidadTonChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">No. MOTOR:</label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 block w-full border rounded-md"
+                            value={motor}
+                            onChange={handleMotorChange}
+                        />
+                    </div>
+                </form>
+            </div>
+            <div>
+                <form>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">Placa:</label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 block w-full border rounded-md"
+                            value={placas}
+                            onChange={handlePlacasChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">Marca:</label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 block w-full border rounded-md"
+                            value={marca}
+                            onChange={handleMarcaChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">Pasajeros:</label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 block w-full border rounded-md"
+                            value={pasajeros}
+                            onChange={handlePasajerosChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">CVU:</label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 block w-full border rounded-md"
+                            value={cvu}
+                            onChange={handleCvuChange}
+                        />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    );
+}
+
+VehiculoForm.propTypes = {
+    setDatosVehiculo: PropTypes.func.isRequired
+};
+
+export default VehiculoForm;
