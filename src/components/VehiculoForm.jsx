@@ -78,7 +78,7 @@ function VehiculoForm({ setDatosVehiculo }) {
                     <div className="mb-4">
                         <label className="block text-sm font-medium">Capacidad en Toneladas:</label>
                         <input
-                            type="text"
+                            type="number"
                             className="mt-1 p-2 block w-full border rounded-md"
                             value={capacidadton}
                             onChange={handleCapacidadTonChange}
@@ -87,7 +87,7 @@ function VehiculoForm({ setDatosVehiculo }) {
                     <div className="mb-4">
                         <label className="block text-sm font-medium">No. MOTOR:</label>
                         <input
-                            type="text"
+                            type="number"
                             className="mt-1 p-2 block w-full border rounded-md"
                             value={motor}
                             onChange={handleMotorChange}
@@ -118,7 +118,7 @@ function VehiculoForm({ setDatosVehiculo }) {
                     <div className="mb-4">
                         <label className="block text-sm font-medium">Pasajeros:</label>
                         <input
-                            type="text"
+                            type="number"
                             className="mt-1 p-2 block w-full border rounded-md"
                             value={pasajeros}
                             onChange={handlePasajerosChange}

@@ -72,8 +72,12 @@ function App() {
                 <Text style={styles.text}>No. Motor: {datosVehiculo.motor}</Text>
                 <Text style={styles.text}>CVU: {datosVehiculo.cvu}</Text>
                 <Text style={styles.greenBackground}>Datos del Mantenimiento</Text>
-                <Text style={styles.text}>Nombre: {datosMantenimiento.nombre}</Text>
-
+                <Text style={styles.text}>Fecha de Mantenimiento: {datosMantenimiento.fecha}</Text>
+                <Text style={styles.text}>Tipo de Mantenimiento: {datosMantenimiento.tipo}</Text>
+                <Text style={styles.text}>Descripcion del Mantenimiento: {datosMantenimiento.descripcion}</Text>
+                <Text style={styles.text}>Kilometraje del ultimo mantenimiento Mantenimiento: {datosMantenimiento.kilometraje}</Text>
+                <Text style={styles.text}>Conductor que confirma el mantenimiento realizado: {datosMantenimiento.conductor}</Text>
+                <Text style={styles.text}>Proveedor que realiza el mantenimiento: {datosMantenimiento.proveedor}</Text>
               </View>
             </Page>
           </Document>

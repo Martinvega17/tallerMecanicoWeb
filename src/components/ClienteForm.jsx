@@ -35,61 +35,63 @@ function ClienteForm({ setDatosCliente }) {
 
     return (
         <div className="grid grid-cols-2 gap-4 mx-4">
-             <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">Datos Personales</h2>
-            <div>
-                <form>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">Nombre:</label>
-                        <input
-                            type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
-                            value={nombre}
-                            onChange={handleNombreChange}
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">Licencia de Conducir:</label>
-                        <input
-                            type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
-                            value={licencia}
-                            onChange={handleLicenciaChange}
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">Correo Electrónico:</label>
-                        <input
-                            type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
-                            value={correo}
-                            onChange={handleCorreoChange}
-                        />
-                    </div>
-                </form>
+    <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">Datos Personales</h2>
+    <div>
+        <form>
+            <div className="mb-4">
+                <label className="block text-sm font-medium">Nombre:</label>
+                <input
+                    type="text"
+                    className="mt-1 p-2 block w-full border rounded-md"
+                    value={nombre}
+                    onChange={handleNombreChange}
+                />
             </div>
-            <div>
-                <form>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">Teléfono:</label>
-                        <input
-                            type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
-                            value={telefono}
-                            onChange={handleTelefonoChange}
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">Dirección:</label>
-                        <input
-                            type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
-                            value={direccion}
-                            onChange={handleDireccionChange}
-                        />
-                    </div>
-                </form>
+            <div className="mb-4">
+                <label className="block text-sm font-medium">Licencia de Conducir:</label>
+                <input
+                    type="text"
+                    className="mt-1 p-2 block w-full border rounded-md"
+                    value={licencia}
+                    onChange={handleLicenciaChange}
+                />
             </div>
-        </div>
+            <div className="mb-4">
+                <label className="block text-sm font-medium">Correo Electrónico:</label>
+                <input
+                    type="email" /* Cambiado a 'email' */
+                    className="mt-1 p-2 block w-full border rounded-md"
+                    value={correo}
+                    onChange={handleCorreoChange}
+                />
+            </div>
+        </form>
+    </div>
+    <div>
+        <form>
+            <div className="mb-4">
+                <label className="block text-sm font-medium">Teléfono:</label>
+                <input
+                    type="number" /* Cambiado a 'tel' */
+                    maxLength={5}
+                    className="mt-1 p-2 block w-full border rounded-md"
+                    value={telefono}
+                    onChange={handleTelefonoChange}
+                />
+            </div>
+            <div className="mb-4">
+                <label className="block text-sm font-medium">Dirección:</label>
+                <input
+                    type="text"
+                    className="mt-1 p-2 block w-full border rounded-md"
+                    value={direccion}
+                    onChange={handleDireccionChange}
+                />
+            </div>
+        </form>
+    </div>
+</div>
+
 
     );
 }
