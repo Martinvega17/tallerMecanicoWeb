@@ -3,6 +3,7 @@ import { Document, Page, Text, View, PDFViewer, StyleSheet  } from '@react-pdf/r
 import ClienteForm from './components/ClienteForm';
 import VehiculoForm from './components/VehiculoForm';
 import MantenimietoForm from './components/MantenimientoForm';
+import ElaboradoForm from './components/ElaboradoForm';
 
 const styles = StyleSheet.create({
   section: {
@@ -35,6 +36,7 @@ function App() {
   const [datosCliente, setDatosCliente] = useState({});
   const [datosVehiculo, setDatosVehiculo] = useState({});
   const [datosMantenimiento, setDatosMantenimiento] = useState({});
+  const [datosElaborado, setDatosElaborado] = useState({});
   const [mostrarResumen, setMostrarResumen] = useState(false);
 
   const generarReportePDF = () => {
@@ -43,10 +45,11 @@ function App() {
 
   return (
     <div>
-      <h1 className='text-center text-2xl mt-2 font-bold'>VEHICLE INSPECTION REPORT</h1>
+      <h1 className='text-center text-2xl mt-2 font-bold mb-4'>REPORTE DE INSPECCION DEL VEHICULO</h1>
       <ClienteForm setDatosCliente={setDatosCliente} />
       <VehiculoForm setDatosVehiculo={setDatosVehiculo} />
       <MantenimietoForm setDatosMantenimiento={setDatosMantenimiento} />
+      <ElaboradoForm setDatosElaborado={setDatosElaborado} />
 
       <button className='ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md' onClick={generarReportePDF} >Generar Reporte PDF</button>
 
@@ -78,6 +81,14 @@ function App() {
                 <Text style={styles.text}>Kilometraje del ultimo mantenimiento Mantenimiento: {datosMantenimiento.kilometraje}</Text>
                 <Text style={styles.text}>Conductor que confirma el mantenimiento realizado: {datosMantenimiento.conductor}</Text>
                 <Text style={styles.text}>Proveedor que realiza el mantenimiento: {datosMantenimiento.proveedor}</Text>
+                <Text style={styles.greenBackground}>Elaborado por:</Text>
+                <Text style={styles.text}>Nombre: {datosElaborado.elaboradonombre}</Text>
+                <Text style={styles.text}>Cargo: {datosElaborado.elaboradocargo}</Text>
+                <Text style={styles.text}>Firma: {datosElaborado.elaboradofirma}</Text>
+                <Text style={styles.greenBackground}>Revisado por:</Text>
+                <Text style={styles.text}>Nombre: {datosElaborado.revisadonombre}</Text>
+                <Text style={styles.text}>Cargo: {datosElaborado.revisadocargo}</Text>
+                <Text style={styles.text}>Firma: {datosElaborado.revisadofirma}</Text>
               </View>
             </Page>
           </Document>

@@ -35,14 +35,16 @@ function ClienteForm({ setDatosCliente }) {
 
     return (
         <div className="grid grid-cols-2 gap-4 mx-4">
-    <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">Datos Personales</h2>
+    <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">DATOS PERSONALES</h2>
     <div>
         <form>
             <div className="mb-4">
                 <label className="block text-sm font-medium">Nombre:</label>
                 <input
-                    type="text"
-                    className="mt-1 p-2 block w-full border rounded-md"
+                    type="number"
+                    className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                     value={nombre}
                     onChange={handleNombreChange}
                 />
@@ -51,7 +53,9 @@ function ClienteForm({ setDatosCliente }) {
                 <label className="block text-sm font-medium">Licencia de Conducir:</label>
                 <input
                     type="text"
-                    className="mt-1 p-2 block w-full border rounded-md"
+                    className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                     value={licencia}
                     onChange={handleLicenciaChange}
                 />
@@ -60,7 +64,9 @@ function ClienteForm({ setDatosCliente }) {
                 <label className="block text-sm font-medium">Correo Electrónico:</label>
                 <input
                     type="email" /* Cambiado a 'email' */
-                    className="mt-1 p-2 block w-full border rounded-md"
+                    className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                     value={correo}
                     onChange={handleCorreoChange}
                 />
@@ -74,7 +80,9 @@ function ClienteForm({ setDatosCliente }) {
                 <input
                     type="number" /* Cambiado a 'tel' */
                     maxLength={5}
-                    className="mt-1 p-2 block w-full border rounded-md"
+                    className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                     value={telefono}
                     onChange={handleTelefonoChange}
                 />
@@ -83,7 +91,9 @@ function ClienteForm({ setDatosCliente }) {
                 <label className="block text-sm font-medium">Dirección:</label>
                 <input
                     type="text"
-                    className="mt-1 p-2 block w-full border rounded-md"
+                    className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                     value={direccion}
                     onChange={handleDireccionChange}
                 />

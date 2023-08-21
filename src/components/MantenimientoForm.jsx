@@ -44,7 +44,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
 
     return (
         <div className="grid grid-cols-2 gap-4 mx-4">
-            <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">Datos Mantenimiento</h2>
+            <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">DATOS DEL MANTENIMIENTO</h2>
             <div>
 
                 <form>
@@ -52,7 +52,9 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                         <label className="block text-sm font-medium">Fecha de Mantenimiento:</label>
                         <input
                             type="datetime-local"
-                            className="block text-sm font-medium w-full border rounded-md p-2"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={fecha}
                             onChange={handleFechaChange}
                         />
@@ -62,7 +64,9 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                         <label className="block text-sm font-medium">Kilometraje del ultimo mantenimiento:</label>
                         <input
                             type="text"
-                            className="block text-sm font-medium w-full border rounded-md p-2"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={kilometraje}
                             onChange={handleKilometrajeChange}
                         />
@@ -72,7 +76,9 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                         <label className="block text-sm font-medium">Proveedor que realiza el mantenimiento:</label>
                         <input
                             type="text"
-                            className="block text-sm font-medium w-full border rounded-md p-2"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={proveedor}
                             onChange={handleProveedorChange}
                         />
@@ -84,7 +90,9 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                 <form>
                     <div className="mb-4">
                         <label className="block text-sm font-medium">Tipo de Mantenimiento</label>
-                        <select value={tipo} onChange={handleTipoMantenimientoChange} className='block text-sm font-medium w-full border rounded-md p-2'>
+                        <select value={tipo} onChange={handleTipoMantenimientoChange} className='mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500'>
                             <option value="Preventivo">Preventivo</option>
                             <option value="Correctivo">Correctivo</option>
                         </select>
@@ -95,7 +103,9 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                         <textarea
                             name=""
                             id=""
-                            className='block text-sm font-medium w-full border rounded-md p-2'
+                            className='mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500'
                             cols="30"
                             rows="3"
                             value={descripcion}
@@ -107,7 +117,9 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                         <label className="block text-sm font-medium">Conductor que confirma el mantenimiento realizado:</label>
                         <input
                             type="text"
-                            className="block text-sm font-medium w-full border rounded-md p-2"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={conductor}
                             onChange={handleConductorChange}
                         />

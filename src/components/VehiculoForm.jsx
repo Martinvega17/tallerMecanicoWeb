@@ -53,7 +53,7 @@ function VehiculoForm({ setDatosVehiculo }) {
 
     return (
         <div className="grid grid-cols-2 gap-4 mx-4">
-            <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">Datos del Vehículo</h2>
+            <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">INFORMACION DEL VEHICULO</h2>
 
             <div>
                 <form>
@@ -61,7 +61,9 @@ function VehiculoForm({ setDatosVehiculo }) {
                         <label className="block text-sm font-medium">Vehículo:</label>
                         <input
                             type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={vehiculo}
                             onChange={handleVehiculoChange}
                         />
@@ -70,7 +72,9 @@ function VehiculoForm({ setDatosVehiculo }) {
                         <label className="block text-sm font-medium">Modelo:</label>
                         <input
                             type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={modelo}
                             onChange={handleModeloChange}
                         />
@@ -79,7 +83,9 @@ function VehiculoForm({ setDatosVehiculo }) {
                         <label className="block text-sm font-medium">Capacidad en Toneladas:</label>
                         <input
                             type="number"
-                            className="mt-1 p-2 block w-full border rounded-md"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={capacidadton}
                             onChange={handleCapacidadTonChange}
                         />
@@ -88,7 +94,9 @@ function VehiculoForm({ setDatosVehiculo }) {
                         <label className="block text-sm font-medium">No. MOTOR:</label>
                         <input
                             type="number"
-                            className="mt-1 p-2 block w-full border rounded-md"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={motor}
                             onChange={handleMotorChange}
                         />
@@ -101,7 +109,9 @@ function VehiculoForm({ setDatosVehiculo }) {
                         <label className="block text-sm font-medium">Placa:</label>
                         <input
                             type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={placas}
                             onChange={handlePlacasChange}
                         />
@@ -110,7 +120,9 @@ function VehiculoForm({ setDatosVehiculo }) {
                         <label className="block text-sm font-medium">Marca:</label>
                         <input
                             type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={marca}
                             onChange={handleMarcaChange}
                         />
@@ -119,7 +131,9 @@ function VehiculoForm({ setDatosVehiculo }) {
                         <label className="block text-sm font-medium">Pasajeros:</label>
                         <input
                             type="number"
-                            className="mt-1 p-2 block w-full border rounded-md"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={pasajeros}
                             onChange={handlePasajerosChange}
                         />
@@ -128,7 +142,9 @@ function VehiculoForm({ setDatosVehiculo }) {
                         <label className="block text-sm font-medium">CVU:</label>
                         <input
                             type="text"
-                            className="mt-1 p-2 block w-full border rounded-md"
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={cvu}
                             onChange={handleCvuChange}
                         />
