@@ -51,7 +51,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                     <div className="mb-4">
                         <label className="block text-sm font-medium">Fecha de Mantenimiento:</label>
                         <input
-                            type="datetime-local"
+                            type="date"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
                             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
@@ -63,7 +63,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                     <div className="mb-4">
                         <label className="block text-sm font-medium">Kilometraje del ultimo mantenimiento:</label>
                         <input
-                            type="text"
+                            type="number"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
                             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
