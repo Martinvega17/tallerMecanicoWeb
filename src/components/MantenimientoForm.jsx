@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function MantenimientoForm({ setDatosMantenimiento }) {
+function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
     const [fecha, setFecha] = useState('');
     const [tipo, setTipo] = useState('');
     const [descripcion, setDescripcion] = useState('');
@@ -40,6 +40,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
 
     const handleGuardarMantenimiento = () => {
         setDatosMantenimiento((prevData) => ({ ...prevData, tipo: tipo }));
+        onGuardarMantenimiento(); // Call the passed function
     };
 
     return (
@@ -93,6 +94,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                         <select value={tipo} onChange={handleTipoMantenimientoChange} className='mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
                     focus:invalid:border-pink-500 focus:invalid:ring-pink-500'>
+                            <option value="">Seleccionar</option> {/* Opción en blanco */}
                             <option value="Preventivo">Preventivo</option>
                             <option value="Correctivo">Correctivo</option>
                         </select>
@@ -135,7 +137,9 @@ function MantenimientoForm({ setDatosMantenimiento }) {
 }
 
 MantenimientoForm.propTypes = {
-    setDatosMantenimiento: PropTypes.func.isRequired
+    setDatosMantenimiento: PropTypes.func.isRequired,
+    onGuardarMantenimiento: PropTypes.func.isRequired, // Add this line
 };
+
 
 export default MantenimientoForm;

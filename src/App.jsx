@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Document, Page, Text, View, PDFViewer, StyleSheet, Font } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Font, pdf, Image } from '@react-pdf/renderer';
 import ClienteForm from './components/ClienteForm';
 import VehiculoForm from './components/VehiculoForm';
 import MantenimietoForm from './components/MantenimientoForm';
 import ElaboradoForm from './components/ElaboradoForm';
 import LatoBold from './fonts/Lato-Bold.ttf';
+import vehicle from './assets/images/vehicle1.png';
 
 // Registra la fuente en React PDF Renderer
 Font.register({ family: 'Lato-Bold', src: LatoBold });
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold', // Agrega negritas
     fontFamily: 'Lato-Bold', // Usa la fuente registrada
   },
-  text: {
+  title: {
     fontSize: 14,
     marginBottom: 5,
     border: '1px solid #E5E7EB', // Color del borde similar al de la página web
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     boxSizing: 'border-box', // Considera el relleno en el ancho total de la columna
     marginBottom: 10, // Aumentamos el margen inferior entre las columnas
   },
-  text1: {
+  text: {
     fontSize: 14,
     marginBottom: 5,
     border: '1px solid #E5E7EB', // Color del borde similar al de la página web
@@ -58,6 +59,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row', // Cambio a flex-direction: row
     justifyContent: 'space-between', // Alineación entre elementos
     columnGap: 10,
+  },
+  image: {
+    marginBottom: 10,
   },
 });
 
@@ -67,73 +71,102 @@ function App() {
   const [datosVehiculo, setDatosVehiculo] = useState({});
   const [datosMantenimiento, setDatosMantenimiento] = useState({});
   const [datosElaborado, setDatosElaborado] = useState({});
-  const [mostrarResumen, setMostrarResumen] = useState(false);
+  const [mostrarGenerarPDF, setMostrarGenerarPDF] = useState(false);
 
-  const generarReportePDF = () => {
-    setMostrarResumen(true);
+  const handleGuardarMantenimiento = () => {
+    setMostrarGenerarPDF(true); // Mostrar el botón Generar Reporte PDF después de guardar
   };
+
+  const generarReportePDF = async () => {
+    const pdfBlob = await pdf(<Document>
+      <Page>
+        <View style={styles.section}>
+          <Text style={styles.heading}>PROCESO DE INFRAESTRUCTURA:</Text>
+          <Text style={styles.heading}>INFORME MENSUAL DE MANTENIMIENTO VEHICULAR:</Text>
+          <Text style={styles.greenBackground}>INFORMACION DEL CLIENTE</Text>
+          <View style={styles.text}>
+            <View style={styles.column}>
+              <Text>Nombre: {datosCliente.nombre} </Text>
+              <Text>Licencia de Conducir: {datosCliente.licencia}</Text>
+              <Text>Correo Electronico: {datosCliente.correo}</Text>
+            </View>
+            <View style={styles.column}>
+              <Text>Telefono: {datosCliente.telefono}</Text>
+              <Text>Direccion: {datosCliente.direccion}</Text>
+            </View>
+          </View>
+          <View style={styles.imageContainer}>
+            <Image src={vehicle} style={styles.image} />
+          </View>
+
+          <Text style={styles.greenBackground}>INFORMACION DEL VEHICULO</Text>
+          <Text style={styles.text}>
+            <Text style={styles.title}>Vehiculo: </Text>
+            <Text style={styles.text}>{datosVehiculo.vehiculo}</Text>
+          </Text>
+          <Text style={styles.title}>Marca: {datosVehiculo.marca}</Text>
+          <Text style={styles.title}>Modelo: {datosVehiculo.modelo} </Text>
+          <Text style={styles.title}>Placas: {datosVehiculo.placas}</Text>
+          <Text style={styles.title}>Capacidad en Toneladas: {datosVehiculo.capacidadton}</Text>
+          <Text style={styles.title}>Capacidad de Pasajeros: {datosVehiculo.pasajeros}</Text>
+          <Text style={styles.title}>No. Motor: {datosVehiculo.motor}</Text>
+          <Text style={styles.title}>CVU: {datosVehiculo.cvu}</Text>
+          <Text style={styles.greenBackground}>DATOS DEL MANTENIMIENTO</Text>
+          <Text style={styles.title}>Fecha de Mantenimiento: {datosMantenimiento.fecha}</Text>
+          <Text style={styles.title}>Tipo de Mantenimiento: {datosMantenimiento.tipo}</Text>
+          <Text style={styles.title}>Descripcion del Mantenimiento: {datosMantenimiento.descripcion}</Text>
+          <Text style={styles.title}>Kilometraje del ultimo mantenimiento Mantenimiento: {datosMantenimiento.kilometraje}</Text>
+          <Text style={styles.title}>Conductor que confirma el mantenimiento realizado: {datosMantenimiento.conductor}</Text>
+          <Text style={styles.title}>Proveedor que realiza el mantenimiento: {datosMantenimiento.proveedor}</Text>
+          <Text style={styles.greenBackground}>ELABORADO POR</Text>
+          <Text style={styles.title}>Nombre: {datosElaborado.elaboradonombre}</Text>
+          <Text style={styles.title}>Cargo: {datosElaborado.elaboradocargo}</Text>
+          <Text style={styles.title}>Firma: {datosElaborado.elaboradofirma}</Text>
+          <Text style={styles.greenBackground}>REVISADO POR</Text>
+          <Text style={styles.title}>Nombre: {datosElaborado.revisadonombre}</Text>
+          <Text style={styles.title}>Cargo: {datosElaborado.revisadocargo}</Text>
+          <Text style={styles.title}>Firma: {datosElaborado.revisadofirma}</Text>
+        </View>
+      </Page>
+    </Document>).toBlob();
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+
+    const a = document.createElement('a');
+    a.href = pdfUrl;
+    a.download = 'reporte.pdf'; // Cambia el nombre del archivo si lo deseas
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(pdfUrl);
+  };
+
+
+
+
 
   return (
     <div>
+
       <h1 className='text-center text-2xl mt-2 font-bold mb-4'>REPORTE DE INSPECCION DEL VEHICULO</h1>
 
       <ClienteForm setDatosCliente={setDatosCliente} />
+      <div className=" justify-center justify-items-center flex">
+      <img
+        src={vehicle}
+        style={styles.image}
+      />
+      </div>
       <VehiculoForm setDatosVehiculo={setDatosVehiculo} />
-      <MantenimietoForm setDatosMantenimiento={setDatosMantenimiento} />
+      <MantenimietoForm
+        setDatosMantenimiento={setDatosMantenimiento}
+        onGuardarMantenimiento={handleGuardarMantenimiento} // Pass the function here
+      />
       <ElaboradoForm setDatosElaborado={setDatosElaborado} />
 
-      <button className='ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md' onClick={generarReportePDF} >Generar Reporte PDF</button>
 
-      {mostrarResumen && (
-        <PDFViewer width="100%" height={600}>
-          <Document>
-            <Page>
-              <View style={styles.section}>
-                <Text style={styles.heading}>PROCESO DE INFRAESTRUCTURA:</Text>
-                <Text style={styles.heading}>INFORME MENSUAL DE MANTENIMIENTO VEHICULAR:</Text>
-                <Text style={styles.greenBackground}>INFORMACION DEL CLIENTE</Text>
-                <View style={styles.text}>
-                  <View style={styles.column}>
-                    <Text>Nombre: {datosCliente.nombre} </Text>
-                    <Text>Licencia de Conducir: {datosCliente.licencia}</Text>
-                    <Text>Correo Electronico: {datosCliente.correo}</Text>
-                  </View>
-                  <View style={styles.column}>
-                    <Text>Telefono: {datosCliente.telefono}</Text>
-                    <Text>Direccion: {datosCliente.direccion}</Text>
-                  </View>
-                </View>
-                <Text style={styles.greenBackground}>INFORMACION DEL VEHICULO</Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.text}>Vehiculo: </Text>
-                  <Text style={styles.text1}>{datosVehiculo.vehiculo}</Text>
-                </Text>
-                <Text style={styles.text}>Marca: {datosVehiculo.marca}</Text>
-                <Text style={styles.text}>Modelo: {datosVehiculo.modelo} </Text>
-                <Text style={styles.text}>Placas: {datosVehiculo.placas}</Text>
-                <Text style={styles.text}>Capacidad en Toneladas: {datosVehiculo.capacidadton}</Text>
-                <Text style={styles.text}>Capacidad de Pasajeros: {datosVehiculo.pasajeros}</Text>
-                <Text style={styles.text}>No. Motor: {datosVehiculo.motor}</Text>
-                <Text style={styles.text}>CVU: {datosVehiculo.cvu}</Text>
-                <Text style={styles.greenBackground}>DATOS DEL MANTENIMIENTO</Text>
-                <Text style={styles.text}>Fecha de Mantenimiento: {datosMantenimiento.fecha}</Text>
-                <Text style={styles.text}>Tipo de Mantenimiento: {datosMantenimiento.tipo}</Text>
-                <Text style={styles.text}>Descripcion del Mantenimiento: {datosMantenimiento.descripcion}</Text>
-                <Text style={styles.text}>Kilometraje del ultimo mantenimiento Mantenimiento: {datosMantenimiento.kilometraje}</Text>
-                <Text style={styles.text}>Conductor que confirma el mantenimiento realizado: {datosMantenimiento.conductor}</Text>
-                <Text style={styles.text}>Proveedor que realiza el mantenimiento: {datosMantenimiento.proveedor}</Text>
-                <Text style={styles.greenBackground}>ELABORADO POR</Text>
-                <Text style={styles.text}>Nombre: {datosElaborado.elaboradonombre}</Text>
-                <Text style={styles.text}>Cargo: {datosElaborado.elaboradocargo}</Text>
-                <Text style={styles.text}>Firma: {datosElaborado.elaboradofirma}</Text>
-                <Text style={styles.greenBackground}>REVISADO POR</Text>
-                <Text style={styles.text}>Nombre: {datosElaborado.revisadonombre}</Text>
-                <Text style={styles.text}>Cargo: {datosElaborado.revisadocargo}</Text>
-                <Text style={styles.text}>Firma: {datosElaborado.revisadofirma}</Text>
-              </View>
-            </Page>
-          </Document>
-        </PDFViewer>
+      {mostrarGenerarPDF && (
+        <button className='ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md' onClick={generarReportePDF}>Generar Reporte PDF</button>
       )}
     </div>
   );
