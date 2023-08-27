@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold', // Usa la fuente registrada
   },
   text: {
-    fontSize: 14,
+    fontSize: 10,
     marginBottom: 5,
     border: '1px solid #E5E7EB', // Color del borde similar al de la página web
     padding: 4,
@@ -45,16 +45,25 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   column: {
-    width: '50%', // Divide en dos columnas
-    display: 'inline-block', // Muestra las columnas una al lado de la otra
-    verticalAlign: 'top', // Alinea el contenido en la parte superior de la columna
-    padding: '0 10px', // Añade un poco de espacio entre las columnas
-    boxSizing: 'border-box', // Considera el relleno en el ancho total de la columna
-    marginBottom: 10, // Aumentamos el margen inferior entre las columnas
+    display: 'flex', // Muestra las columnas una al lado de la otra
     marginTop: 10,
   },
+  textContainer: {
+    columnCount: 2, // Establecer el número de columnas
+    columnGap: '20px', // Espacio entre las columnas
+    fontSize: 14,
+    marginBottom: '10px', // Agrega un margen inferior para separar del siguiente contenido
+    display: 'flex', // Muestra las columnas una al lado de la otra
+  },
   text1: {
-    fontSize: 10,
+    fontSize: 14,
+    flexDirection: 'row', // Cambio a flex-direction: row
+    marginRight: '10px',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
+  title: {
+    fontSize: 14,
     flexDirection: 'row', // Cambio a flex-direction: row
     fontFamily: 'Lato-Bold', // Usa la fuente registrada
     padding: 'none',
@@ -109,37 +118,76 @@ function App() {
     const pdfBlob = await pdf(<Document>
       <Page>
         <View style={styles.section}>
-          <Text style={styles.heading}>PROCESO DE INFRAESTRUCTURA:</Text>
-          <Text style={styles.heading}>INFORME MENSUAL DE MANTENIMIENTO VEHICULAR:</Text>
+          <Text style={styles.heading}>REPORTE DE INSPECCION VEHICULAR:</Text>
           <Text style={styles.blueBackground}>INFORMACION DEL CLIENTE</Text>
-          <View style={styles.text}>
-            <View style={styles.column}>
-              <Text>Nombre: {datosCliente.nombre} </Text>
-              <Text>Licencia de Conducir: {datosCliente.licencia}</Text>
-              <Text>Correo Electronico: {datosCliente.correo}</Text>
-            </View>
-            <View style={styles.column}>
-              <Text>Telefono: {datosCliente.telefono}</Text>
-              <Text>Direccion: {datosCliente.direccion}</Text>
+          <View style={styles.text1}>
+            <View style={styles.textContainer}>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Proveedor: </Text>
+                <Text style={styles.text1}>{datosCliente.proveedor}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Cliente: </Text>
+                <Text style={styles.text1}>{datosCliente.cliente}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Kilometraje: </Text>
+                <Text style={styles.text1}>{datosCliente.kilometraje}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Marca: </Text>
+                <Text style={styles.text1}>{datosCliente.marca}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Modelo: </Text>
+                <Text style={styles.text1}>{datosCliente.modelo}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>VIN: </Text>
+                <Text style={styles.text1}>{datosCliente.vin}</Text>
+              </Text>
+
+            </View> 
+            <View style={styles.textContainer}>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Fecha: </Text>
+                <Text style={styles.text1}>{datosCliente.fecha}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Tecnico: </Text>
+                <Text style={styles.text1}>{datosCliente.tecnico}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Telefono: </Text>
+                <Text style={styles.text1}>{datosCliente.telefono}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Direccion: </Text>
+                <Text style={styles.text1}>{datosCliente.direccion}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Correo Electronico: </Text>
+                <Text style={styles.text1}>{datosCliente.correo}</Text>
+              </Text>
             </View>
           </View>
-          <View style={styles.text}>
+          <View style={styles.text1}>
             <View style={styles.column}>
               <View style={styles.semaforoContainer}>
-                <View style={[styles.semaforo, { backgroundColor: 'green' }]} />
-                <Text style={styles.text1}>CHECKED AND OK</Text>
+                <View style={[styles.semaforo, { backgroundColor: '#3A9A4A' }]} />
+                <Text style={styles.text}>CHECKED AND OKEY</Text>
               </View>
             </View>
             <View style={styles.column}>
               <View style={styles.semaforoContainer}>
-                <View style={[styles.semaforo, { backgroundColor: 'yellow' }]} />
-                <Text style={styles.text1}>MAY REQUIRE ATTENTION</Text>
+                <View style={[styles.semaforo, { backgroundColor: '#FACB02' }]} />
+                <Text style={styles.text}>MAY NEED FUTURE ATTENTION</Text>
               </View>
             </View>
             <View style={styles.column}>
               <View style={styles.semaforoContainer}>
-                <View style={[styles.semaforo, { backgroundColor: 'red' }]} />
-                <Text style={styles.text1}>REQUIRES ATTENTION IMMEDIATELY</Text>
+                <View style={[styles.semaforo, { backgroundColor: '#DC0C14' }]} />
+                <Text style={styles.text}>REQUIRES INMEDIATE ATTENTION</Text>
               </View>
             </View>
           </View>
@@ -148,32 +196,81 @@ function App() {
           </View>
 
           <Text style={styles.blueBackground}>INFORMACION DEL VEHICULO</Text>
-          <Text style={styles.text}>
-            <Text style={styles.title}>Vehiculo: </Text>
-            <Text style={styles.text}>{datosVehiculo.vehiculo}</Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Marca: </Text>
+            <Text style={styles.text1}>{datosVehiculo.marca}</Text>
           </Text>
-          <Text style={styles.title}>Marca: {datosVehiculo.marca}</Text>
-          <Text style={styles.title}>Modelo: {datosVehiculo.modelo} </Text>
-          <Text style={styles.title}>Placas: {datosVehiculo.placas}</Text>
-          <Text style={styles.title}>Capacidad en Toneladas: {datosVehiculo.capacidadton}</Text>
-          <Text style={styles.title}>Capacidad de Pasajeros: {datosVehiculo.pasajeros}</Text>
-          <Text style={styles.title}>No. Motor: {datosVehiculo.motor}</Text>
-          <Text style={styles.title}>CVU: {datosVehiculo.cvu}</Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Modelo: </Text>
+            <Text style={styles.text1}>{datosVehiculo.modelo}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Placas: </Text>
+            <Text style={styles.text1}>{datosVehiculo.placas}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Capacidad en Toneladas: </Text>
+            <Text style={styles.text1}>{datosVehiculo.capacidadton}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Capacidad de Pasajeros: </Text>
+            <Text style={styles.text1}>{datosVehiculo.pasajeros}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>No. de Motor: </Text>
+            <Text style={styles.text1}>{datosVehiculo.motor}</Text>
+          </Text>
           <Text style={styles.blueBackground}>DATOS DEL MANTENIMIENTO</Text>
-          <Text style={styles.title}>Fecha de Mantenimiento: {datosMantenimiento.fecha}</Text>
-          <Text style={styles.title}>Tipo de Mantenimiento: {datosMantenimiento.tipo}</Text>
-          <Text style={styles.title}>Descripcion del Mantenimiento: {datosMantenimiento.descripcion}</Text>
-          <Text style={styles.title}>Kilometraje del ultimo mantenimiento Mantenimiento: {datosMantenimiento.kilometraje}</Text>
-          <Text style={styles.title}>Conductor que confirma el mantenimiento realizado: {datosMantenimiento.conductor}</Text>
-          <Text style={styles.title}>Proveedor que realiza el mantenimiento: {datosMantenimiento.proveedor}</Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Fecha de Mantenimiento: </Text>
+            <Text style={styles.text1}>{datosMantenimiento.fecha}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Tipo de Mantenimiento: </Text>
+            <Text style={styles.text1}>{datosMantenimiento.tipo}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Descripcion del Mantenimiento: </Text>
+            <Text style={styles.text1}>{datosMantenimiento.descripcion}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Kilometraje del ultimo Mantenimiento: </Text>
+            <Text style={styles.text1}>{datosMantenimiento.kilometraje}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Conductor que confirma Mantenimiento: </Text>
+            <Text style={styles.text1}>{datosMantenimiento.conductor}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Proveedor que realiza Mantenimiento: </Text>
+            <Text style={styles.text1}>{datosMantenimiento.proveedor}</Text>
+          </Text>
           <Text style={styles.blueBackground}>ELABORADO POR</Text>
-          <Text style={styles.title}>Nombre: {datosElaborado.elaboradonombre}</Text>
-          <Text style={styles.title}>Cargo: {datosElaborado.elaboradocargo}</Text>
-          <Text style={styles.title}>Firma: {datosElaborado.elaboradofirma}</Text>
-          <Text style={styles.greenBackground}>REVISADO POR</Text>
-          <Text style={styles.title}>Nombre: {datosElaborado.revisadonombre}</Text>
-          <Text style={styles.title}>Cargo: {datosElaborado.revisadocargo}</Text>
-          <Text style={styles.title}>Firma: {datosElaborado.revisadofirma}</Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Nombre: </Text>
+            <Text style={styles.text1}>{datosElaborado.elaboradonombre}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Cargo: </Text>
+            <Text style={styles.text1}>{datosElaborado.elaboradocargo}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Firma: </Text>
+            <Text style={styles.text1}>{datosElaborado.elaboradofirma}</Text>
+          </Text>
+          <Text style={styles.blueBackground}>REVISADO POR</Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Nombre: </Text>
+            <Text style={styles.text1}>{datosElaborado.elaboradonombre}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Cargo: </Text>
+            <Text style={styles.text1}>{datosElaborado.elaboradocargo}</Text>
+          </Text>
+          <Text style={styles.text1}>
+            <Text style={styles.title}>Firma: </Text>
+            <Text style={styles.text1}>{datosElaborado.elaboradofirma}</Text>
+          </Text>
         </View>
       </Page>
     </Document>).toBlob();
