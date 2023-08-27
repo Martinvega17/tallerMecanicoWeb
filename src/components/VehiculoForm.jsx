@@ -2,19 +2,12 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function VehiculoForm({ setDatosVehiculo }) {
-    const [vehiculo, setVehiculo] = useState('');
     const [placas, setPlacas] = useState('');
     const [modelo, setModelo] = useState('');
     const [marca, setMarca] = useState('');
     const [capacidadton, setCapacidadTon] = useState('');
     const [pasajeros, setPasajeros] = useState('');
     const [motor, setMotor] = useState('');
-    const [cvu, setCvu] = useState('');
-
-    const handleVehiculoChange = (event) => {
-        setVehiculo(event.target.value);
-        setDatosVehiculo((prevData) => ({ ...prevData, vehiculo: event.target.value }));
-    };
 
     const handlePlacasChange = (event) => {
         setPlacas(event.target.value);
@@ -46,10 +39,6 @@ function VehiculoForm({ setDatosVehiculo }) {
         setDatosVehiculo((prevData) => ({ ...prevData, motor: event.target.value }));
     };
 
-    const handleCvuChange = (event) => {
-        setCvu(event.target.value);
-        setDatosVehiculo((prevData) => ({ ...prevData, cvu: event.target.value }));
-    };
 
     return (
         <div className="grid grid-cols-2 gap-4 mx-4">
@@ -57,39 +46,32 @@ function VehiculoForm({ setDatosVehiculo }) {
 
             <div>
                 <form>
+
                     <div className="mb-4">
-                        <label className="block text-sm font-medium">Vehículo:</label>
+                        <label className="block text-sm font-medium">Marca:</label>
                         <input
                             type="text"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
                             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                            value={vehiculo}
-                            onChange={handleVehiculoChange}
+                            value={marca}
+                            onChange={handleMarcaChange}
                         />
                     </div>
+
                     <div className="mb-4">
-                        <label className="block text-sm font-medium">Modelo:</label>
+                        <label className="block text-sm font-medium">Placa:</label>
                         <input
                             type="text"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
                             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                            value={modelo}
-                            onChange={handleModeloChange}
+                            value={placas}
+                            onChange={handlePlacasChange}
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">Capacidad en Toneladas:</label>
-                        <input
-                            type="number"
-                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
-                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
-                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                            value={capacidadton}
-                            onChange={handleCapacidadTonChange}
-                        />
-                    </div>
+                    
+                    
                     <div className="mb-4">
                         <label className="block text-sm font-medium">No. MOTOR:</label>
                         <input
@@ -105,28 +87,33 @@ function VehiculoForm({ setDatosVehiculo }) {
             </div>
             <div>
                 <form>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">Placa:</label>
+
+                    
+
+                <div className="mb-4">
+                        <label className="block text-sm font-medium">Modelo:</label>
                         <input
                             type="text"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
                             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                            value={placas}
-                            onChange={handlePlacasChange}
+                            value={modelo}
+                            onChange={handleModeloChange}
                         />
                     </div>
+
                     <div className="mb-4">
-                        <label className="block text-sm font-medium">Marca:</label>
+                        <label className="block text-sm font-medium">Capacidad en Toneladas:</label>
                         <input
-                            type="text"
+                            type="number"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
                             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                            value={marca}
-                            onChange={handleMarcaChange}
+                            value={capacidadton}
+                            onChange={handleCapacidadTonChange}
                         />
                     </div>
+
                     <div className="mb-4">
                         <label className="block text-sm font-medium">Pasajeros:</label>
                         <input
@@ -138,17 +125,6 @@ function VehiculoForm({ setDatosVehiculo }) {
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             value={pasajeros}
                             onChange={handlePasajerosChange}
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">CVU:</label>
-                        <input
-                            type="text"
-                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
-                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
-                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                            value={cvu}
-                            onChange={handleCvuChange}
                         />
                     </div>
                 </form>
