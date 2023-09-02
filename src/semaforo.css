@@ -1,0 +1,25 @@
+/* Estilos para los colores del semáforo */
+.semaforo {
+    display: inline-block;
+    width: 20px; /* Ancho del cuadrado del semáforo */
+    height: 20px; /* Altura del cuadrado del semáforo */
+    margin-right: 8px; /* Espacio entre el semáforo y el texto */
+}
+
+/* Estilo para el semáforo verde */
+.verde {
+    background-color: #339E37;
+    accent-color: #339E37;
+}
+
+/* Estilo para el semáforo amarillo */
+.amarillo {
+    background-color: #FFC803;
+    accent-color: #FFC803;
+}
+
+/* Estilo para el semáforo rojo */
+.rojo {
+    background-color: red;
+    accent-color: red;
+}
