@@ -20,7 +20,6 @@ function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
         }));
     };
 
-
     const handleConductorChange = (event) => {
         setConductor(event.target.value);
         setDatosMantenimiento((prevData) => ({
@@ -29,22 +28,20 @@ function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
         }));
     };
 
-
-
     const handleGuardarMantenimiento = () => {
         setDatosMantenimiento((prevData) => ({ ...prevData, tipo: tipo }));
         onGuardarMantenimiento(); // Call the passed function
     };
 
     return (
-        <div className="grid grid-cols-2 gap-4 mx-4">
+        <div className="sm:grid grid-cols-1 sm:grid-cols-2 gap-4 mx-4">
             <h2 className="text-xl font-semibold mb-2 col-span-2 text-center">
                 DATOS DEL MANTENIMIENTO
             </h2>
-            <h3 className="text-center font-semibold col-span-2 text-lg">
+            <h3 className="text-center font-semibold col-span-2 text-lg mb-6">
                 CHECKLIST
             </h3>
-            <div className="col-span-2 grid grid-cols-3 gap-4 text-center">
+            <div className="col-span-2 grid grid-cols-3 gap-4  text-center">
                 <div className="col-span-1">
                     <span className="semaforo verde"></span>
                     CHECKED AND OKEY
@@ -58,7 +55,7 @@ function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
                     REQUIRES INMEDIATE ATTENTION
                 </div>
             </div>
-            <div className="mb-4 margin">
+            <div className="mb-4 my-10 sm:my-4">
                 <form>
                     <legend className="text-center bg-[#333] text-white font-bold p-2">
                         INTERIOR/EXTERIOR
@@ -84,7 +81,7 @@ function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
                             value={descripcion}
                             onChange={handleDescripcionChange}
                         />
-                        <label className="text-sm font-medium ml-2" htmlFor="verde">
+                        <label className="text-sm font-medium ml-2 mt-4" htmlFor="verde">
                             Head Lights / Tail Lights / Turn Signals / Hazard Warning Lights /
                             Brake Lights / Exterior Lights
                         </label>
@@ -736,12 +733,12 @@ function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
                 </form>
             </div>
 
-            <div>
+            <div className="mb-4 my-10 sm:my-4">
                 <form>
                     <legend className="text-center bg-[#333] text-white font-bold p-2">
                         INTERIOR/EXTERIOR
                     </legend>
-                    
+
                     <div className="flex items-center mb-2 ">
                         <input
                             type="checkbox"
@@ -761,7 +758,7 @@ function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
                             id="rojo"
                             name="rojo"
                         />
-                        <label className="text-sm font-medium ml-2" htmlFor="verde">
+                        <label className="text-sm font-medium ml-2 mt-4" htmlFor="verde">
                             Battery Charge
                         </label>
                     </div>
@@ -814,8 +811,6 @@ function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
                     <div className="items-end">
                         <img src={battery} alt="" height={320} width={140} />
                     </div>
-
-                    
                 </form>
             </div>
 
