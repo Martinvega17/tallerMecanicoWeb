@@ -3,14 +3,9 @@ import PropTypes from "prop-types";
 import "../semaforo.css";
 import battery from "../assets/images/battery.png";
 
-function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
-    const [tipo, setTipo] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [conductor, setConductor] = useState("");
+function MantenimientoForm({ setDatosMantenimiento }) {
 
-    const handleTipoMantenimientoChange = (event) => {
-        setTipo(event.target.value);
-    };
+    const [descripcion, setDescripcion] = useState("");
 
     const handleDescripcionChange = (event) => {
         setDescripcion(event.target.value);
@@ -20,18 +15,6 @@ function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
         }));
     };
 
-    const handleConductorChange = (event) => {
-        setConductor(event.target.value);
-        setDatosMantenimiento((prevData) => ({
-            ...prevData,
-            conductor: event.target.value,
-        }));
-    };
-
-    const handleGuardarMantenimiento = () => {
-        setDatosMantenimiento((prevData) => ({ ...prevData, tipo: tipo }));
-        onGuardarMantenimiento(); // Call the passed function
-    };
 
     return (
         <div className="sm:grid grid-cols-1 sm:grid-cols-2 gap-4 mx-4">
@@ -814,49 +797,7 @@ function MantenimientoForm({ setDatosMantenimiento, onGuardarMantenimiento }) {
                 </form>
             </div>
 
-            <div>
-                <form>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">
-                            Tipo de Mantenimiento
-                        </label>
-                        <select
-                            value={tipo}
-                            onChange={handleTipoMantenimientoChange}
-                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
-                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
-                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                        >
-                            <option value="">Seleccionar</option> {/* Opción en blanco */}
-                            <option value="Preventivo">Preventivo</option>
-                            <option value="Correctivo">Correctivo</option>
-                        </select>
-                    </div>
 
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium">
-                            Conductor que confirma el mantenimiento realizado:
-                        </label>
-                        <input
-                            type="text"
-                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
-                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
-                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                            value={conductor}
-                            onChange={handleConductorChange}
-                        />
-                    </div>
-                </form>
-            </div>
-
-            <div>
-                <button
-                    className="h-10 w-24 border rounded-lg bg-blue-500 text-white text-sm top-full "
-                    onClick={handleGuardarMantenimiento}
-                >
-                    Guardar
-                </button>
-            </div>
         </div>
     );
 }

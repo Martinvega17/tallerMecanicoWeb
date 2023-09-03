@@ -89,11 +89,9 @@ function App() {
   const [datosVehiculo, setDatosVehiculo] = useState({});
   const [datosMantenimiento, setDatosMantenimiento] = useState({});
   const [datosElaborado, setDatosElaborado] = useState({});
-  const [mostrarGenerarPDF, setMostrarGenerarPDF] = useState(false);
 
-  const handleGuardarMantenimiento = () => {
-    setMostrarGenerarPDF(true); // Mostrar el botón Generar Reporte PDF después de guardar
-  };
+
+
 
   const generarReportePDF = async () => {
     /*  // Realiza la validación de los campos requeridos aquí
@@ -147,7 +145,7 @@ function App() {
                 <Text style={styles.text1}>{datosCliente.vin}</Text>
               </Text>
 
-            </View> 
+            </View>
             <View style={styles.textContainer}>
               <Text style={styles.text1}>
                 <Text style={styles.title}>Fecha: </Text>
@@ -223,27 +221,7 @@ function App() {
           <Text style={styles.blueBackground}>DATOS DEL MANTENIMIENTO</Text>
           <Text style={styles.text1}>
             <Text style={styles.title}>Fecha de Mantenimiento: </Text>
-            <Text style={styles.text1}>{datosMantenimiento.fecha}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Tipo de Mantenimiento: </Text>
-            <Text style={styles.text1}>{datosMantenimiento.tipo}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Descripcion del Mantenimiento: </Text>
             <Text style={styles.text1}>{datosMantenimiento.descripcion}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Kilometraje del ultimo Mantenimiento: </Text>
-            <Text style={styles.text1}>{datosMantenimiento.kilometraje}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Conductor que confirma Mantenimiento: </Text>
-            <Text style={styles.text1}>{datosMantenimiento.conductor}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Proveedor que realiza Mantenimiento: </Text>
-            <Text style={styles.text1}>{datosMantenimiento.proveedor}</Text>
           </Text>
           <Text style={styles.blueBackground}>ELABORADO POR</Text>
           <Text style={styles.text1}>
@@ -300,15 +278,14 @@ function App() {
       </div>
       <VehiculoForm setDatosVehiculo={setDatosVehiculo} />
       <MantenimietoForm
-        setDatosMantenimiento={setDatosMantenimiento}
-        onGuardarMantenimiento={handleGuardarMantenimiento} // Pass the function here
+        setDatosMantenimiento={setDatosMantenimiento} // Pass the function here
       />
       <ElaboradoForm setDatosElaborado={setDatosElaborado} />
 
 
-      {mostrarGenerarPDF && (
-        <button className='ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md' onClick={generarReportePDF}>Generar Reporte PDF</button>
-      )}
+
+      <button className='ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md' onClick={generarReportePDF}>Generar Reporte PDF</button>
+
     </div>
   );
 }
