@@ -16,11 +16,16 @@ function MantenimientoForm({ setDatosMantenimiento }) {
         }));
     };
 
+    const [verdeChecked, setVerdeChecked] = useState(false);
+    const [amarilloChecked, setAmarilloChecked] = useState(false);
+    const [rojoChecked, setRojoChecked] = useState(false);
+
+
 
     return (
         <div className="sm:grid grid-cols-1 sm:grid-cols-2 gap-4 mx-4">
             <h2 className="text-xl font-semibold mb-2 col-span-2 text-center">
-            MAINTENANCE DATA
+                MAINTENANCE DATA
             </h2>
             <h3 className="text-center font-semibold col-span-2 text-lg mb-6">
                 CHECKLIST
@@ -50,21 +55,44 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                             className="mt-1 p-2 semaforo verde"
                             id="verde"
                             name="verde"
+                            checked={verdeChecked}
+                            onChange={() => {
+                                setVerdeChecked(!verdeChecked);
+                                setDatosMantenimiento((prevData) => ({
+                                    ...prevData,
+                                    verdeChecked: !verdeChecked,
+                                }));
+                            }}
                         />
                         <input
                             type="checkbox"
                             className="mt-1 p-2 semaforo amarillo"
                             id="amarillo"
                             name="amarillo"
+                            checked={amarilloChecked}
+                            onChange={() => {
+                                setAmarilloChecked(!amarilloChecked);
+                                setDatosMantenimiento((prevData) => ({
+                                    ...prevData,
+                                    amarilloChecked: !amarilloChecked,
+                                }));
+                            }}
                         />
                         <input
                             type="checkbox"
                             className="mt-1 p-2 semaforo rojo"
                             id="rojo"
                             name="rojo"
-                            value={descripcion}
-                            onChange={handleDescripcionChange}
+                            checked={rojoChecked}
+                            onChange={() => {
+                                setRojoChecked(!rojoChecked);
+                                setDatosMantenimiento((prevData) => ({
+                                    ...prevData,
+                                    rojoChecked: !rojoChecked,
+                                }));
+                            }}
                         />
+
                         <label className="text-sm font-medium ml-2 mt-4" htmlFor="verde">
                             Head Lights / Tail Lights / Turn Signals / Hazard Warning Lights /
                             Brake Lights / Exterior Lights
@@ -809,7 +837,9 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                     </legend>
                     <label htmlFor="">
                         <textarea name="" id="" cols="124" rows="8"
-                        className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            value={descripcion}
+                            onChange={handleDescripcionChange}
+                            className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
                         focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
                         >
                         </textarea>

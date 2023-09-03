@@ -1,97 +1,107 @@
-import { useState } from 'react';
-import { Document, Page, Text, View, StyleSheet, Font, pdf, Image } from '@react-pdf/renderer';
-import ClienteForm from './components/ClienteForm';
-import VehiculoForm from './components/VehiculoForm';
-import MantenimietoForm from './components/MantenimientoForm';
-import ElaboradoForm from './components/ElaboradoForm';
-import LatoBold from './fonts/Lato-Bold.ttf';
-import vehicle from './assets/images/vehicle1.png';
+import { useState } from "react";
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  Font,
+  pdf,
+  Image,
+} from "@react-pdf/renderer";
+import ClienteForm from "./components/ClienteForm";
+import VehiculoForm from "./components/VehiculoForm";
+import MantenimietoForm from "./components/MantenimientoForm";
+import ElaboradoForm from "./components/ElaboradoForm";
+import LatoBold from "./fonts/Lato-Bold.ttf";
+import vehicle from "./assets/images/vehicle1.png";
 
 // Registra la fuente en React PDF Renderer
-Font.register({ family: 'Lato-Bold', src: LatoBold });
+Font.register({ family: "Lato-Bold", src: LatoBold });
 const styles = StyleSheet.create({
   section: {
     margin: 10,
     padding: 10,
-    backgroundColor: '#F3F4F6', // Color de fondo similar al de la página web
-    border: '1pt solid #E5E7EB', // Color del borde similar al de la página web
+    backgroundColor: "#F3F4F6", // Color de fondo similar al de la página web
+    border: "1pt solid #E5E7EB", // Color del borde similar al de la página web
   },
   heading: {
     fontSize: 18,
     marginBottom: 10,
-    textAlign: 'center', // Centrar el texto
-    fontWeight: 'bold', // Agrega negritas
-    fontFamily: 'Lato-Bold', // Usa la fuente registrada
+    textAlign: "center", // Centrar el texto
+    fontWeight: "bold", // Agrega negritas
+    fontFamily: "Lato-Bold", // Usa la fuente registrada
   },
   text: {
     fontSize: 10,
     marginBottom: 5,
-    border: '1px solid #E5E7EB', // Color del borde similar al de la página web
+    border: "1px solid #E5E7EB", // Color del borde similar al de la página web
     padding: 4,
-    flexDirection: 'row', // Cambio a flex-direction: row
-    justifyContent: 'space-between', // Alineación entre elementos
+    flexDirection: "row", // Cambio a flex-direction: row
+    justifyContent: "space-between", // Alineación entre elementos
     columnGap: 10,
-    fontFamily: 'Lato-Bold', // Usa la fuente registrada
+    fontFamily: "Lato-Bold", // Usa la fuente registrada
     marginTop: 10,
   },
   blueBackground: {
-    backgroundColor: '#0150FE', // Color de fondo azul similar al de la página web
-    color: 'white',
+    backgroundColor: "#0150FE", // Color de fondo azul similar al de la página web
+    color: "white",
     padding: 5,
-    fontFamily: 'Lato-Bold', // Usa la fuente registrada
+    fontFamily: "Lato-Bold", // Usa la fuente registrada
     marginBottom: 5,
-    textAlign: 'center', // Centrar el texto
+    textAlign: "center", // Centrar el texto
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   column: {
-    display: 'flex', // Muestra las columnas una al lado de la otra
+    display: "flex", // Muestra las columnas una al lado de la otra
     marginTop: 10,
   },
   textContainer: {
     columnCount: 2, // Establecer el número de columnas
-    columnGap: '20px', // Espacio entre las columnas
+    columnGap: "20px", // Espacio entre las columnas
     fontSize: 14,
-    marginBottom: '10px', // Agrega un margen inferior para separar del siguiente contenido
-    display: 'flex', // Muestra las columnas una al lado de la otra
+    marginBottom: "10px", // Agrega un margen inferior para separar del siguiente contenido
+    display: "flex", // Muestra las columnas una al lado de la otra
   },
   text1: {
     fontSize: 14,
-    flexDirection: 'row', // Cambio a flex-direction: row
-    marginRight: '10px',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
+    flexDirection: "row", // Cambio a flex-direction: row
+    marginRight: "10px",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
   title: {
     fontSize: 14,
-    flexDirection: 'row', // Cambio a flex-direction: row
-    fontFamily: 'Lato-Bold', // Usa la fuente registrada
-    padding: 'none',
-    border: 'none',
-    marginRight: '10px',
+    flexDirection: "row", // Cambio a flex-direction: row
+    fontFamily: "Lato-Bold", // Usa la fuente registrada
+    padding: "none",
+    border: "none",
+    marginRight: "10px",
   },
   semaforo: {
-    width: 14,  // Ancho del círculo
+    width: 14, // Ancho del círculo
     height: 14, // Altura del círculo
     borderRadius: 0, // Hace que sea un círculo con la mitad del ancho/alto
-    marginRight: '6px', // Espacio entre el círculo y el texto
-    position: 'block', // Permite posicionar el texto sobre el círculo
+    marginRight: "6px", // Espacio entre el círculo y el texto
+    position: "block", // Permite posicionar el texto sobre el círculo
   },
   semaforoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
-
 
 function App() {
   const [datosCliente, setDatosCliente] = useState({});
   const [datosVehiculo, setDatosVehiculo] = useState({});
-  const [datosMantenimiento, setDatosMantenimiento] = useState({});
+  const [datosMantenimiento, setDatosMantenimiento] = useState({
+    // Inicializa los valores de los checkboxes en false
+    verdeChecked: false,
+    amarilloChecked: false,
+    rojoChecked: false,
+  });
   const [datosElaborado, setDatosElaborado] = useState({});
-
-
-
 
   const generarReportePDF = async () => {
     /*  // Realiza la validación de los campos requeridos aquí
@@ -113,143 +123,175 @@ function App() {
        alert(mensaje);
        return; // Evita la generación del PDF si hay campos faltantes
      } */
-    const pdfBlob = await pdf(<Document>
-      <Page>
-        <View style={styles.section}>
-          <Text style={styles.heading}>REPORTE DE INSPECCION VEHICULAR:</Text>
-          <Text style={styles.blueBackground}>INFORMACION DEL CLIENTE</Text>
-          <View style={styles.text1}>
-            <View style={styles.textContainer}>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Proveedor: </Text>
-                <Text style={styles.text1}>{datosCliente.proveedor}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Cliente: </Text>
-                <Text style={styles.text1}>{datosCliente.cliente}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Kilometraje: </Text>
-                <Text style={styles.text1}>{datosCliente.kilometraje}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>VIN: </Text>
-                <Text style={styles.text1}>{datosCliente.vin}</Text>
-              </Text>
-
-            </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Fecha: </Text>
-                <Text style={styles.text1}>{datosCliente.fecha}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Tecnico: </Text>
-                <Text style={styles.text1}>{datosCliente.tecnico}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Telefono: </Text>
-                <Text style={styles.text1}>{datosCliente.telefono}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Direccion: </Text>
-                <Text style={styles.text1}>{datosCliente.direccion}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Correo Electronico: </Text>
-                <Text style={styles.text1}>{datosCliente.correo}</Text>
-              </Text>
-            </View>
-          </View>
-          <View style={styles.text1}>
-            <View style={styles.column}>
-              <View style={styles.semaforoContainer}>
-                <View style={[styles.semaforo, { backgroundColor: '#3A9A4A' }]} />
-                <Text style={styles.text}>CHECKED AND OKEY</Text>
+    const pdfBlob = await pdf(
+      <Document>
+        <Page>
+          <View style={styles.section}>
+            <Text style={styles.heading}>REPORTE DE INSPECCION VEHICULAR:</Text>
+            <Text style={styles.blueBackground}>INFORMACION DEL CLIENTE</Text>
+            <View style={styles.text1}>
+              <View style={styles.textContainer}>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Proveedor: </Text>
+                  <Text style={styles.text1}>{datosCliente.proveedor}</Text>
+                </Text>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Cliente: </Text>
+                  <Text style={styles.text1}>{datosCliente.cliente}</Text>
+                </Text>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Kilometraje: </Text>
+                  <Text style={styles.text1}>{datosCliente.kilometraje}</Text>
+                </Text>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>VIN: </Text>
+                  <Text style={styles.text1}>{datosCliente.vin}</Text>
+                </Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Fecha: </Text>
+                  <Text style={styles.text1}>{datosCliente.fecha}</Text>
+                </Text>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Tecnico: </Text>
+                  <Text style={styles.text1}>{datosCliente.tecnico}</Text>
+                </Text>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Telefono: </Text>
+                  <Text style={styles.text1}>{datosCliente.telefono}</Text>
+                </Text>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Direccion: </Text>
+                  <Text style={styles.text1}>{datosCliente.direccion}</Text>
+                </Text>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Correo Electronico: </Text>
+                  <Text style={styles.text1}>{datosCliente.correo}</Text>
+                </Text>
               </View>
             </View>
-            <View style={styles.column}>
-              <View style={styles.semaforoContainer}>
-                <View style={[styles.semaforo, { backgroundColor: '#FACB02' }]} />
-                <Text style={styles.text}>MAY NEED FUTURE ATTENTION</Text>
+            <View style={styles.text1}>
+              <View style={styles.column}>
+                <View style={styles.semaforoContainer}>
+                  <View
+                    style={[styles.semaforo, { backgroundColor: "#3A9A4A" }]}
+                  />
+                  <Text style={styles.text}>CHECKED AND OKEY</Text>
+                </View>
+              </View>
+              <View style={styles.column}>
+                <View style={styles.semaforoContainer}>
+                  <View
+                    style={[styles.semaforo, { backgroundColor: "#FACB02" }]}
+                  />
+                  <Text style={styles.text}>MAY NEED FUTURE ATTENTION</Text>
+                </View>
+              </View>
+              <View style={styles.column}>
+                <View style={styles.semaforoContainer}>
+                  <View
+                    style={[styles.semaforo, { backgroundColor: "#DC0C14" }]}
+                  />
+                  <Text style={styles.text}>REQUIRES INMEDIATE ATTENTION</Text>
+                </View>
               </View>
             </View>
-            <View style={styles.column}>
-              <View style={styles.semaforoContainer}>
-                <View style={[styles.semaforo, { backgroundColor: '#DC0C14' }]} />
-                <Text style={styles.text}>REQUIRES INMEDIATE ATTENTION</Text>
+            <View style={styles.imageContainer}>
+              <Image src={vehicle} style={styles.image} />
+            </View>
+
+            <Text style={styles.blueBackground}>INFORMACION DEL VEHICULO</Text>
+            <View style={styles.text1}>
+              <View style={styles.textContainer}>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Marca: </Text>
+                  <Text style={styles.text1}>{datosVehiculo.marca}</Text>
+                </Text>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Placa: </Text>
+                  <Text style={styles.text1}>{datosVehiculo.placas}</Text>
+                </Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Modelo: </Text>
+                  <Text style={styles.text1}>{datosVehiculo.modelo}</Text>
+                </Text>
+                <Text style={styles.text1}>
+                  <Text style={styles.title}>Capacidad en Toneladas: </Text>
+                  <Text style={styles.text1}>{datosVehiculo.capacidadton}</Text>
+                </Text>
               </View>
             </View>
+            <Text style={styles.blueBackground}>DATOS DEL MANTENIMIENTO</Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Fecha de Mantenimiento: </Text>
+              <Text style={styles.text1}>{datosMantenimiento.descripcion}</Text>
+            </Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Verde: </Text>
+              <Text style={styles.text1}>
+                {datosMantenimiento.verdeChecked
+                  ? "Checked and okey"
+                  : ""}
+              </Text>
+            </Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Amarillo: </Text>
+              <Text style={styles.text1}>
+                {datosMantenimiento.amarilloChecked
+                  ? "May need future attention"
+                  : ""}
+              </Text>
+            </Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Rojo: </Text>
+              <Text style={styles.text1}>
+                {datosMantenimiento.rojoChecked
+                  ? "Requires inmediate attention"
+                  : ""}
+              </Text>
+            </Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Fecha de Mantenimiento: </Text>
+              <Text style={styles.text1}>{datosMantenimiento.descripcion}</Text>
+            </Text>
+            <Text style={styles.blueBackground}>ELABORADO POR</Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Nombre: </Text>
+              <Text style={styles.text1}>{datosElaborado.elaboradonombre}</Text>
+            </Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Cargo: </Text>
+              <Text style={styles.text1}>{datosElaborado.elaboradocargo}</Text>
+            </Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Firma: </Text>
+              <Text style={styles.text1}>{datosElaborado.elaboradofirma}</Text>
+            </Text>
+            <Text style={styles.blueBackground}>REVISADO POR</Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Nombre: </Text>
+              <Text style={styles.text1}>{datosElaborado.elaboradonombre}</Text>
+            </Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Cargo: </Text>
+              <Text style={styles.text1}>{datosElaborado.elaboradocargo}</Text>
+            </Text>
+            <Text style={styles.text1}>
+              <Text style={styles.title}>Firma: </Text>
+              <Text style={styles.text1}>{datosElaborado.elaboradofirma}</Text>
+            </Text>
           </View>
-          <View style={styles.imageContainer}>
-            <Image src={vehicle} style={styles.image} />
-          </View>
-
-          <Text style={styles.blueBackground}>INFORMACION DEL VEHICULO</Text>
-          <View style={styles.text1}>
-            <View style={styles.textContainer}>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Marca: </Text>
-                <Text style={styles.text1}>{datosVehiculo.marca}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Placa: </Text>
-                <Text style={styles.text1}>{datosVehiculo.placas}</Text>
-              </Text>
-              
-
-            </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Modelo: </Text>
-                <Text style={styles.text1}>{datosVehiculo.modelo}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Capacidad en Toneladas: </Text>
-                <Text style={styles.text1}>{datosVehiculo.capacidadton}</Text>
-              </Text>
-              
-            </View>
-          </View>
-          <Text style={styles.blueBackground}>DATOS DEL MANTENIMIENTO</Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Fecha de Mantenimiento: </Text>
-            <Text style={styles.text1}>{datosMantenimiento.descripcion}</Text>
-          </Text>
-          <Text style={styles.blueBackground}>ELABORADO POR</Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Nombre: </Text>
-            <Text style={styles.text1}>{datosElaborado.elaboradonombre}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Cargo: </Text>
-            <Text style={styles.text1}>{datosElaborado.elaboradocargo}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Firma: </Text>
-            <Text style={styles.text1}>{datosElaborado.elaboradofirma}</Text>
-          </Text>
-          <Text style={styles.blueBackground}>REVISADO POR</Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Nombre: </Text>
-            <Text style={styles.text1}>{datosElaborado.elaboradonombre}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Cargo: </Text>
-            <Text style={styles.text1}>{datosElaborado.elaboradocargo}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Firma: </Text>
-            <Text style={styles.text1}>{datosElaborado.elaboradofirma}</Text>
-          </Text>
-        </View>
-      </Page>
-    </Document>).toBlob();
+        </Page>
+      </Document>
+    ).toBlob();
     const pdfUrl = URL.createObjectURL(pdfBlob);
 
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = pdfUrl;
-    a.download = 'reporte.pdf'; // Cambia el nombre del archivo si lo deseas
+    a.download = "reporte.pdf"; // Cambia el nombre del archivo si lo deseas
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -259,15 +301,13 @@ function App() {
 
   return (
     <div>
-
-      <h1 className='text-center text-2xl mt-2 font-bold mb-4'>VEHICLE INSPECTION REPORT</h1>
+      <h1 className="text-center text-2xl mt-2 font-bold mb-4">
+        VEHICLE INSPECTION REPORT
+      </h1>
 
       <ClienteForm setDatosCliente={setDatosCliente} />
       <div className=" justify-center justify-items-center flex">
-        <img
-          src={vehicle}
-          style={styles.image}
-        />
+        <img src={vehicle} style={styles.image} />
       </div>
       <VehiculoForm setDatosVehiculo={setDatosVehiculo} />
       <MantenimietoForm
@@ -275,10 +315,12 @@ function App() {
       />
       <ElaboradoForm setDatosElaborado={setDatosElaborado} />
 
-
-
-      <button className='ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md' onClick={generarReportePDF}>Generate PDF Report</button>
-
+      <button
+        className="ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md"
+        onClick={generarReportePDF}
+      >
+        Generate PDF Report
+      </button>
     </div>
   );
 }
