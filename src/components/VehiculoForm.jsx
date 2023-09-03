@@ -33,13 +33,13 @@ function VehiculoForm({ setDatosVehiculo }) {
 
     return (
         <div className="grid grid-cols-2 gap-4 mx-4">
-            <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">INFORMACION DEL VEHICULO</h2>
+            <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">VEHICLE INFORMATION</h2>
 
             <div>
                 <form>
 
                     <div className="mb-4">
-                        <label className="block text-sm font-medium">Marca:</label>
+                        <label className="block text-sm font-medium">Make:</label>
                         <input
                             type="text"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
@@ -51,7 +51,7 @@ function VehiculoForm({ setDatosVehiculo }) {
                     </div>
 
                     <div className="mb-4">
-                        <label className="block text-sm font-medium">Placa:</label>
+                        <label className="block text-sm font-medium">Plate:</label>
                         <input
                             type="text"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
@@ -70,7 +70,7 @@ function VehiculoForm({ setDatosVehiculo }) {
                     
 
                 <div className="mb-4">
-                        <label className="block text-sm font-medium">Modelo:</label>
+                        <label className="block text-sm font-medium">Model:</label>
                         <input
                             type="text"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
@@ -82,7 +82,7 @@ function VehiculoForm({ setDatosVehiculo }) {
                     </div>
 
                     <div className="mb-4">
-                        <label className="block text-sm font-medium">Capacidad en Toneladas:</label>
+                        <label className="block text-sm font-medium">Capacity in Tons:</label>
                         <input
                             type="number"
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400

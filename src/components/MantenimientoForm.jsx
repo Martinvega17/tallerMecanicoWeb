@@ -20,7 +20,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
     return (
         <div className="sm:grid grid-cols-1 sm:grid-cols-2 gap-4 mx-4">
             <h2 className="text-xl font-semibold mb-2 col-span-2 text-center">
-                DATOS DEL MANTENIMIENTO
+            MAINTENANCE DATA
             </h2>
             <h3 className="text-center font-semibold col-span-2 text-lg mb-6">
                 CHECKLIST
