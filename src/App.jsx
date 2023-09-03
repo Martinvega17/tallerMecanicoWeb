@@ -194,30 +194,31 @@ function App() {
           </View>
 
           <Text style={styles.blueBackground}>INFORMACION DEL VEHICULO</Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Marca: </Text>
-            <Text style={styles.text1}>{datosVehiculo.marca}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Modelo: </Text>
-            <Text style={styles.text1}>{datosVehiculo.modelo}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Placas: </Text>
-            <Text style={styles.text1}>{datosVehiculo.placas}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Capacidad en Toneladas: </Text>
-            <Text style={styles.text1}>{datosVehiculo.capacidadton}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>Capacidad de Pasajeros: </Text>
-            <Text style={styles.text1}>{datosVehiculo.pasajeros}</Text>
-          </Text>
-          <Text style={styles.text1}>
-            <Text style={styles.title}>No. de Motor: </Text>
-            <Text style={styles.text1}>{datosVehiculo.motor}</Text>
-          </Text>
+          <View style={styles.text1}>
+            <View style={styles.textContainer}>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Marca: </Text>
+                <Text style={styles.text1}>{datosVehiculo.marca}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Placa: </Text>
+                <Text style={styles.text1}>{datosVehiculo.placas}</Text>
+              </Text>
+              
+
+            </View>
+            <View style={styles.textContainer}>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Modelo: </Text>
+                <Text style={styles.text1}>{datosVehiculo.modelo}</Text>
+              </Text>
+              <Text style={styles.text1}>
+                <Text style={styles.title}>Capacidad en Toneladas: </Text>
+                <Text style={styles.text1}>{datosVehiculo.capacidadton}</Text>
+              </Text>
+              
+            </View>
+          </View>
           <Text style={styles.blueBackground}>DATOS DEL MANTENIMIENTO</Text>
           <Text style={styles.text1}>
             <Text style={styles.title}>Fecha de Mantenimiento: </Text>
