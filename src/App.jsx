@@ -133,14 +133,6 @@ function App() {
                 <Text style={styles.text1}>{datosCliente.kilometraje}</Text>
               </Text>
               <Text style={styles.text1}>
-                <Text style={styles.title}>Marca: </Text>
-                <Text style={styles.text1}>{datosCliente.marca}</Text>
-              </Text>
-              <Text style={styles.text1}>
-                <Text style={styles.title}>Modelo: </Text>
-                <Text style={styles.text1}>{datosCliente.modelo}</Text>
-              </Text>
-              <Text style={styles.text1}>
                 <Text style={styles.title}>VIN: </Text>
                 <Text style={styles.text1}>{datosCliente.vin}</Text>
               </Text>
