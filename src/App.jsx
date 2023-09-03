@@ -267,7 +267,7 @@ function App() {
   return (
     <div>
 
-      <h1 className='text-center text-2xl mt-2 font-bold mb-4'>REPORTE DE INSPECCION DEL VEHICULO</h1>
+      <h1 className='text-center text-2xl mt-2 font-bold mb-4'>VEHICLE INSPECTION REPORT</h1>
 
       <ClienteForm setDatosCliente={setDatosCliente} />
       <div className=" justify-center justify-items-center flex">
@@ -284,7 +284,7 @@ function App() {
 
 
 
-      <button className='ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md' onClick={generarReportePDF}>Generar Reporte PDF</button>
+      <button className='ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md' onClick={generarReportePDF}>Generate PDF Report</button>
 
     </div>
   );

@@ -45,7 +45,7 @@ function ElaboradoForm({ setDatosElaborado }) {
     <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">ELABORADO POR</h2>
         <form>
             <div className="mb-4">
-                <label className="block text-sm font-medium">Nombre:</label>
+                <label className="block text-sm font-medium">Name:</label>
                 <input
                     type="text"
                     className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
@@ -56,7 +56,7 @@ function ElaboradoForm({ setDatosElaborado }) {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-sm font-medium">Cargo:</label>
+                <label className="block text-sm font-medium">Charge:</label>
                 <input
                     type="text"
                     className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
@@ -67,7 +67,7 @@ function ElaboradoForm({ setDatosElaborado }) {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-sm font-medium">Firma:</label>
+                <label className="block text-sm font-medium">Signature:</label>
                 <input
                     type="text" 
                     disabled className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
@@ -84,7 +84,7 @@ function ElaboradoForm({ setDatosElaborado }) {
         <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">REVISADO POR</h2>
 
             <div className="mb-4">
-                <label className="block text-sm font-medium">Nombre:</label>
+                <label className="block text-sm font-medium">Name:</label>
                 <input
                     type="text" /* Cambiado a 'tel' */
                     maxLength={5}
@@ -96,7 +96,7 @@ function ElaboradoForm({ setDatosElaborado }) {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-sm font-medium">Cargo:</label>
+                <label className="block text-sm font-medium">Charge:</label>
                 <input
                     type="text"
                     className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
@@ -108,7 +108,7 @@ function ElaboradoForm({ setDatosElaborado }) {
             </div>
 
             <div className="mb-4">
-                <label className="block text-sm font-medium">Firma:</label>
+                <label className="block text-sm font-medium">Signature:</label>
                 <input
                     type="text" 
                     disabled className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
