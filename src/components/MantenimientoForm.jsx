@@ -2,6 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "../semaforo.css";
 import battery from "../assets/images/battery.png";
+import vehicle from '../assets/images/vehicle.png'
 
 function MantenimientoForm({ setDatosMantenimiento }) {
 
@@ -794,6 +795,25 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                     <div className="items-end">
                         <img src={battery} alt="" height={320} width={140} />
                     </div>
+                    <legend className="text-center bg-[#333] text-white font-bold p-2">
+                        BRAKE AND TIRE
+                    </legend>
+                    <legend className="text-center bg-[#333] text-white font-bold p-2">
+                        PRIOR BODY DAMAGE
+                    </legend>
+                    <div className="">
+                        <img src={vehicle} alt="" width={1720} />
+                    </div>
+                    <legend className="text-center bg-[#333] text-white font-bold p-2">
+                        COMMENTS / RECOMMENDATIONS
+                    </legend>
+                    <label htmlFor="">
+                        <textarea name="" id="" cols="124" rows="8"
+                        className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                        focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                        >
+                        </textarea>
+                    </label>
                 </form>
             </div>
 
