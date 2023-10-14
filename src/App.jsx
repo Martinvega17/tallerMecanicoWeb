@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Document,
   Page,
@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Font,
   pdf,
-  Image,
+
 } from "@react-pdf/renderer";
 import ClienteForm from "./components/ClienteForm";
 import VehiculoForm from "./components/VehiculoForm";
@@ -20,77 +20,75 @@ import vehicle from "./assets/images/vehicle1.png";
 Font.register({ family: "Lato-Bold", src: LatoBold });
 const styles = StyleSheet.create({
   section: {
-    margin: 10,
-    padding: 10,
-    backgroundColor: "#F3F4F6", // Color de fondo similar al de la página web
-    border: "1pt solid #E5E7EB", // Color del borde similar al de la página web
+    margin: 20, // Aumentar el margen
+    padding: 20, // Aumentar el relleno
+    backgroundColor: "#FFFFFF", // Fondo blanco
+    border: "1pt solid #000000", // Borde negro
+    fontFamily: "Lato-Bold", // Fuente negrita
   },
   heading: {
-    fontSize: 18,
-    marginBottom: 10,
-    textAlign: "center", // Centrar el texto
-    fontWeight: "bold", // Agrega negritas
-    fontFamily: "Lato-Bold", // Usa la fuente registrada
+    fontSize: 24, // Aumentar el tamaño del encabezado
+    marginBottom: 20, // Aumentar el margen inferior
+    textAlign: "center",
+    fontWeight: "bold",
   },
   text: {
-    fontSize: 10,
-    marginBottom: 5,
-    border: "1px solid #E5E7EB", // Color del borde similar al de la página web
-    padding: 4,
-    flexDirection: "row", // Cambio a flex-direction: row
-    justifyContent: "space-between", // Alineación entre elementos
-    columnGap: 10,
-    fontFamily: "Lato-Bold", // Usa la fuente registrada
-    marginTop: 10,
+    fontSize: 12, // Aumentar el tamaño del texto
+    marginBottom: 10, // Aumentar el margen inferior
+    border: "1pt solid #000000", // Borde negro
+    padding: 6, // Aumentar el relleno
+    flexDirection: "row",
+    justifyContent: "space-between",
+    columnGap: 20, // Aumentar el espacio entre columnas
   },
   blueBackground: {
-    backgroundColor: "#0150FE", // Color de fondo azul similar al de la página web
+    backgroundColor: "#0150FE",
     color: "white",
-    padding: 5,
-    fontFamily: "Lato-Bold", // Usa la fuente registrada
-    marginBottom: 5,
-    textAlign: "center", // Centrar el texto
-    fontSize: 16,
+    padding: 10, // Aumentar el relleno
+    fontFamily: "Lato-Bold",
+    marginBottom: 10, // Aumentar el margen inferior
+    textAlign: "center",
+    fontSize: 20, // Aumentar el tamaño del fondo azul
     fontWeight: "bold",
   },
   column: {
-    display: "flex", // Muestra las columnas una al lado de la otra
-    marginTop: 10,
+    display: "flex",
+    marginTop: 20, // Aumentar el margen superior
   },
   textContainer: {
-    columnCount: 2, // Establecer el número de columnas
-    columnGap: "20px", // Espacio entre las columnas
-    fontSize: 14,
-    marginBottom: "10px", // Agrega un margen inferior para separar del siguiente contenido
-    display: "flex", // Muestra las columnas una al lado de la otra
+    columnCount: 2,
+    columnGap: "30px", // Aumentar el espacio entre columnas
+    fontSize: 16, // Aumentar el tamaño del texto dentro del contenedor
+    marginBottom: "15px",
+    display: "flex",
   },
   text1: {
-    fontSize: 14,
-    flexDirection: "row", // Cambio a flex-direction: row
-    marginRight: "10px",
+    fontSize: 16,
+    flexDirection: "row",
+    marginRight: "20px", // Aumentar el margen derecho
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
   },
   title: {
-    fontSize: 14,
-    flexDirection: "row", // Cambio a flex-direction: row
-    fontFamily: "Lato-Bold", // Usa la fuente registrada
+    fontSize: 16,
+    flexDirection: "row",
+    fontFamily: "Lato-Bold",
     padding: "none",
     border: "none",
-    marginRight: "10px",
+    marginRight: "20px",
   },
   semaforo: {
-    width: 14, // Ancho del círculo
-    height: 14, // Altura del círculo
-    borderRadius: 0, // Hace que sea un círculo con la mitad del ancho/alto
-    marginRight: "6px", // Espacio entre el círculo y el texto
-    position: "block", // Permite posicionar el texto sobre el círculo
+    width: 16, // Aumentar el tamaño del círculo
+    height: 16,
+    borderRadius: 8, // Hacer el círculo más redondo
+    marginRight: "8px", // Aumentar el espacio entre el círculo y el texto
   },
   semaforoContainer: {
     flexDirection: "row",
     alignItems: "center",
   },
 });
+
 
 function App() {
   const [datosCliente, setDatosCliente] = useState({});
@@ -104,185 +102,18 @@ function App() {
   const [datosElaborado, setDatosElaborado] = useState({});
 
   const generarReportePDF = async () => {
-    /*  // Realiza la validación de los campos requeridos aquí
-     const camposFaltantes = [];
- 
-     if (!datosCliente.nombre) camposFaltantes.push("Nombre");
-     if (!datosCliente.licencia) camposFaltantes.push("Licencia de Conducir");
-     if (!datosCliente.correo) camposFaltantes.push("Correo Electrónico");
-     if (!datosCliente.telefono) camposFaltantes.push("Teléfono");
-     if (!datosCliente.direccion) camposFaltantes.push("Dirección");
- 
-     // Validación adicional para el campo de correo electrónico
-     if (datosCliente.correo && !/\S+@\S+\.\S+/.test(datosCliente.correo)) {
-       camposFaltantes.push("Formato de Correo Electrónico invalido");
-     }
- 
-     if (camposFaltantes.length > 0) {
-       const mensaje = `Por favor, completa los siguientes campos requeridos:\n ${camposFaltantes.join(", ")}`;
-       alert(mensaje);
-       return; // Evita la generación del PDF si hay campos faltantes
-     } */
+
+
     const pdfBlob = await pdf(
       <Document>
         <Page>
           <View style={styles.section}>
             <Text style={styles.heading}>REPORTE DE INSPECCION VEHICULAR:</Text>
-            <Text style={styles.blueBackground}>INFORMACION DEL CLIENTE</Text>
-            <View style={styles.text1}>
-              <View style={styles.textContainer}>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Proveedor: </Text>
-                  <Text style={styles.text1}>{datosCliente.proveedor}</Text>
-                </Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Cliente: </Text>
-                  <Text style={styles.text1}>{datosCliente.cliente}</Text>
-                </Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Kilometraje: </Text>
-                  <Text style={styles.text1}>{datosCliente.kilometraje}</Text>
-                </Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>VIN: </Text>
-                  <Text style={styles.text1}>{datosCliente.vin}</Text>
-                </Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Fecha: </Text>
-                  <Text style={styles.text1}>{datosCliente.fecha}</Text>
-                </Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Tecnico: </Text>
-                  <Text style={styles.text1}>{datosCliente.tecnico}</Text>
-                </Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Telefono: </Text>
-                  <Text style={styles.text1}>{datosCliente.telefono}</Text>
-                </Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Direccion: </Text>
-                  <Text style={styles.text1}>{datosCliente.direccion}</Text>
-                </Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Correo Electronico: </Text>
-                  <Text style={styles.text1}>{datosCliente.correo}</Text>
-                </Text>
-              </View>
-            </View>
-            <View style={styles.text1}>
-              <View style={styles.column}>
-                <View style={styles.semaforoContainer}>
-                  <View
-                    style={[styles.semaforo, { backgroundColor: "#3A9A4A" }]}
-                  />
-                  <Text style={styles.text}>CHECKED AND OKEY</Text>
-                </View>
-              </View>
-              <View style={styles.column}>
-                <View style={styles.semaforoContainer}>
-                  <View
-                    style={[styles.semaforo, { backgroundColor: "#FACB02" }]}
-                  />
-                  <Text style={styles.text}>MAY NEED FUTURE ATTENTION</Text>
-                </View>
-              </View>
-              <View style={styles.column}>
-                <View style={styles.semaforoContainer}>
-                  <View
-                    style={[styles.semaforo, { backgroundColor: "#DC0C14" }]}
-                  />
-                  <Text style={styles.text}>REQUIRES INMEDIATE ATTENTION</Text>
-                </View>
-              </View>
-            </View>
-            <View style={styles.imageContainer}>
-              <Image src={vehicle} style={styles.image} />
-            </View>
-
-            <Text style={styles.blueBackground}>INFORMACION DEL VEHICULO</Text>
-            <View style={styles.text1}>
-              <View style={styles.textContainer}>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Marca: </Text>
-                  <Text style={styles.text1}>{datosVehiculo.marca}</Text>
-                </Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Placa: </Text>
-                  <Text style={styles.text1}>{datosVehiculo.placas}</Text>
-                </Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Modelo: </Text>
-                  <Text style={styles.text1}>{datosVehiculo.modelo}</Text>
-                </Text>
-                <Text style={styles.text1}>
-                  <Text style={styles.title}>Capacidad en Toneladas: </Text>
-                  <Text style={styles.text1}>{datosVehiculo.capacidadton}</Text>
-                </Text>
-              </View>
-            </View>
-            <Text style={styles.blueBackground}>DATOS DEL MANTENIMIENTO</Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Fecha de Mantenimiento: </Text>
-              <Text style={styles.text1}>{datosMantenimiento.descripcion}</Text>
-            </Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Verde: </Text>
-              <Text style={styles.text1}>
-                {datosMantenimiento.verdeChecked
-                  ? "Checked and okey"
-                  : ""}
-              </Text>
-            </Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Amarillo: </Text>
-              <Text style={styles.text1}>
-                {datosMantenimiento.amarilloChecked
-                  ? "May need future attention"
-                  : ""}
-              </Text>
-            </Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Rojo: </Text>
-              <Text style={styles.text1}>
-                {datosMantenimiento.rojoChecked
-                  ? "Requires inmediate attention"
-                  : ""}
-              </Text>
-            </Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Fecha de Mantenimiento: </Text>
-              <Text style={styles.text1}>{datosMantenimiento.descripcion}</Text>
-            </Text>
-            <Text style={styles.blueBackground}>ELABORADO POR</Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Nombre: </Text>
-              <Text style={styles.text1}>{datosElaborado.elaboradonombre}</Text>
-            </Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Cargo: </Text>
-              <Text style={styles.text1}>{datosElaborado.elaboradocargo}</Text>
-            </Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Firma: </Text>
-              <Text style={styles.text1}>{datosElaborado.elaboradofirma}</Text>
-            </Text>
-            <Text style={styles.blueBackground}>REVISADO POR</Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Nombre: </Text>
-              <Text style={styles.text1}>{datosElaborado.elaboradonombre}</Text>
-            </Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Cargo: </Text>
-              <Text style={styles.text1}>{datosElaborado.elaboradocargo}</Text>
-            </Text>
-            <Text style={styles.text1}>
-              <Text style={styles.title}>Firma: </Text>
-              <Text style={styles.text1}>{datosElaborado.elaboradofirma}</Text>
-            </Text>
+            {generateSection("INFORMACION DEL CLIENTE", datosCliente)}
+            {generateSection("INFORMACION DEL VEHICULO", datosVehiculo)}
+            {generateSection("DATOS DEL MANTENIMIENTO", datosMantenimiento)}
+            {generateSection("ELABORADO POR", datosElaborado)}
+            {generateSection("REVISADO POR", datosElaborado)}
           </View>
         </Page>
       </Document>
@@ -291,13 +122,27 @@ function App() {
 
     const a = document.createElement("a");
     a.href = pdfUrl;
-    a.download = "reporte.pdf"; // Cambia el nombre del archivo si lo deseas
+    a.download = "reporte.pdf";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
 
     URL.revokeObjectURL(pdfUrl);
   };
+
+  const generateSection = (title, data) => (
+    <React.Fragment>
+      <Text style={styles.blueBackground}>{title}</Text>
+      {Object.entries(data).map(([key, value]) => (
+        <Text style={styles.text1} key={key}>
+          <Text style={styles.title}>{key}: </Text>
+          <Text style={styles.text1}>{value}</Text>
+        </Text>
+      ))}
+    </React.Fragment>
+  );
+  
+
 
   return (
     <div>
@@ -311,7 +156,7 @@ function App() {
       </div>
       <VehiculoForm setDatosVehiculo={setDatosVehiculo} />
       <MantenimietoForm
-        setDatosMantenimiento={setDatosMantenimiento} // Pass the function here
+        setDatosMantenimiento={setDatosMantenimiento}
       />
       <ElaboradoForm setDatosElaborado={setDatosElaborado} />
 
