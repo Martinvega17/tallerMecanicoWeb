@@ -21,11 +21,10 @@ function App() {
   return (
     <div>
       <h1 className="text-center text-2xl mt-2 font-bold mb-4">
-        VEHICLE INSPECTION REPORT
+        REPORTE DE INSECCION VEHICULAR
       </h1>
 
-      Aquí coloca tus componentes de formulario y contenido de la página
-      Por ejemplo:
+      
       <ClienteForm setDatosCliente={setDatosCliente} />
       <VehiculoForm setDatosVehiculo={setDatosVehiculo} />
       <MantenimientoForm setDatosMantenimiento={setDatosMantenimiento} />

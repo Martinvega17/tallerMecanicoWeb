@@ -4,13 +4,52 @@ import "../semaforo.css";
 
 function MantenimientoForm({ setDatosMantenimiento }) {
     const [checklist, setChecklist] = useState({
-        lucesDelanteras: "verde",
-        lucesTraseras: "verde",
-        lucesDireccionales: "verde",
-        lucesDeFrenos: "verde",
-        lucesDeReversa: "verde",
-        limpiaparabrisas: "verde",
-        condicionesParabrisas: "verde",
+        lucesDelanteras: "null",
+        lucesTraseras: "null",
+        lucesDireccionales: "null",
+        lucesDeFrenos: "null",
+        lucesDeReversa: "null",
+        limpiaparabrisas: "null",
+        condicionesParabrisas: "null",
+        funcionamientoClaxon: "null",
+        testigosTablero: "null",
+        taponCombustible: "null",
+        frenoEmergencia: "null",
+        funcionamientoAire: "null",
+        funcionamientoEmbrague: "null",
+        esteticaExterior: "null",
+        amostiguadoresDelanteros: "null",
+        amortiguadoresTraseros: "null",
+        horquillasSuspension: "null",
+        barrasTorsion: "null",
+        rotulas: "null",
+        terminales: "null",
+        barraEstabilizadora: "null",
+        barraDireccion: "null",
+        soportesMotor: "null",
+        soporteTransmision: "null",
+        sistemaEscape: "null",
+        fugasAceite: "null",
+        nivelAceite: "null",
+        nivelAnticongelante: "null",
+        nivelAceiteTransmision: "null",
+        liquidoFrenos: "null",
+        liquidoDireccion: "null",
+        liquidoLimpiaparabrisas: "null",
+        filtroAire: "null",
+        bandaAccesorios: "null",
+        radiador: "null",
+        sistemaEnfriamiento: "null",
+        fugasSistemaEnfriamiento: "null",
+        cargaBateria: "null",
+        condicionesBateria: "null",
+        cables: "null",
+        balatasDelanteras: "null",
+        balatasTraseras: "null",
+        llantaDelanteraDer: "null",
+        llantaDelanteraIz: "null",
+        llantaTraseraDer: "null",
+        llantaTraseraIz: "null",
     });
 
     const handleCheckChange = (event) => {
@@ -26,11 +65,11 @@ function MantenimientoForm({ setDatosMantenimiento }) {
     };
 
     const createCheckField = (name, label) => (
-        <div className="flex items-center mb-2">
-            <label className="text-sm font-medium ml-2 mt-4" htmlFor={name}>
+        <div className="flex items-center mb-2 ">
+            <label className="text-sm font-medium ml-2" htmlFor={name}>
                 {label}
             </label>
-            <div className="flex items-center mt-2 ml-4">
+            <div className="flex items-center mt-0 ml-4">
                 <input
                     type="checkbox"
                     className="mt-1 p-2 semaforo verde"
@@ -68,7 +107,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
     );
 
     return (
-        <div className="sm:grid grid-cols-1 sm:grid-cols-2 gap-4 mx-4">
+        <div className="sm:grid grid-cols-2 sm:grid-cols-2 gap-4 mx-4">
             <h2 className="text-xl font-semibold mb-2 col-span-2 text-center">
                 DATOS DEL MANTENIMIENTO
             </h2>
@@ -87,7 +126,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                     <span className="semaforo rojo"></span>
                     REQUIERE ATENCIÓN INMEDIATA                </div>
             </div>
-            <div className="col-span-2 grid grid-cols-3 gap-4 text-center">
+            <div className="col-span-1">
                 <legend className="text-center bg-[#333] text-white font-bold p-2">
                     INTERIOR/EXTERIOR
                 </legend>
@@ -97,7 +136,76 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                 {createCheckField("lucesDeFrenos", "Luces de frenos")}
                 {createCheckField("lucesDeReversa", "Luces de reversa")}
                 {createCheckField("limpiaparabrisas", "Funcionamiento del limpiaparabrisas / estados de las escobillas")}
-                {createCheckField("condicionesParabrisas", "Condiciones del parabrisas")}
+                {createCheckField("condicionesParabrisas", "Estados de los espejos y cristales")}
+                {createCheckField("funcionamientoClaxon", "Funcionamiento del claxon ")}
+                {createCheckField("testigosTablero", "Testigos en el tablero")}
+                {createCheckField("taponCombustible", "Tapón de combustible ")}
+                {createCheckField("frenoEmergencia", "Ajuste del freno de emergencia  ")}
+                {createCheckField("funcionamientoAire", "Funcionamiento del aire acondicionado (si aplica)")}
+                {createCheckField("funcionamientoEmbrague", "Funcionamiento del embrague (si aplica)")}
+                {createCheckField("esteticaExterior", "Estética exterior ")}
+            </div>
+            <div className="col-span-1">
+                <legend className="text-center bg-[#333] text-white font-bold p-2">
+                    DEBAJO DEL VEHÍCULO
+                </legend>
+                {createCheckField("amostiguadoresDelanteros", "Amortiguadores delanteros")}
+                {createCheckField("amortiguadoresTraseros", "Amortiguadores traseros")}
+                {createCheckField("horquillasSuspension", "Horquillas de suspensión ")}
+                {createCheckField("barrasTorsion", "Barras de torsión ")}
+                {createCheckField("rotulas", "Rotulas ")}
+                {createCheckField("terminales", "Terminales")}
+                {createCheckField("barraEstabilizadora", "Bujes de la barra estabilizadora ")}
+                {createCheckField("barraDireccion", "Barra de dirección o cremallera")}
+                {createCheckField("soportesMotor", "Soportes de motor")}
+                {createCheckField("soporteTransmision", "Soporte de transmisión ")}
+                {createCheckField("sistemaEscape", "Sistema de escape")}
+                {createCheckField("fugasAceite", "Fugas de aceite de motor")}
+            </div>
+            <div className="col-span-1">
+                <legend className="text-center bg-[#333] text-white font-bold p-2">
+                    DEBAJO DEL CAPÓ
+                </legend>
+                {createCheckField("nivelAceite", "Nivel del aceite de motor")}
+                {createCheckField("nivelAnticongelante", "Nivel del anticongelante ")}
+                {createCheckField("nivelAceiteTransmision", "Nivel del aceite de transmisión ")}
+                {createCheckField("liquidoFrenos", "Nivel del líquido de frenos ")}
+                {createCheckField("liquidoDireccion", "Nivel del liquido de dirección ")}
+                {createCheckField("liquidoLimpiaparabrisas", "Nivel del líquido del limpiaparabrisas")}
+                {createCheckField("filtroAire", "Filtro de aire")}
+                {createCheckField("bandaAccesorios", "Banda de accesorios ")}
+                {createCheckField("radiador", "Radiador ")}
+                {createCheckField("sistemaEnfriamiento", "Mangueras del sistema de enfriamiento ")}
+                {createCheckField("fugasSistemaEnfriamiento", "Fugas en el sistema de enfriamiento ")}
+                {createCheckField("cargaBateria", "Carga de la batería ")}
+                {createCheckField("condicionesBateria", "Condiciones de la batería ")}
+                {createCheckField("cables", "Cables y terminales de la batería ")}
+            </div>
+            <div className="col-span-1">
+                <legend className="text-center bg-[#333] text-white font-bold p-2">
+                    FRENOS Y LLANTAS
+                </legend>
+                {createCheckField("balatasDelanteras", "Balatas delanteras ")}
+                {createCheckField("balatasTraseras", "Balatas traseras")}
+                {createCheckField("llantaDelanteraDer", "Llanta delantera derecha")}
+                {createCheckField("llantaDelanteraIz", "Llanta delantera izquierda ")}
+                {createCheckField("llantaTraseraDer", "Llanta trasera derecha")}
+                {createCheckField("llantaTraseraIz", "Llanta trasera izquierda")}
+            </div>
+            <div className="col-span-1">
+                <legend className="text-center bg-[#333] text-white font-bold p-2">
+                    COMENTARIOS O RECOMENDACIONES
+                </legend>
+
+                <textarea
+                    type="text"
+                    rows="6"
+                    name="revisadocargo"
+                    className="imt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+                />
+
             </div>
         </div>
     );
