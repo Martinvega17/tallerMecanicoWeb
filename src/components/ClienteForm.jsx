@@ -5,10 +5,8 @@ function ClienteForm({ setDatosCliente }) {
     const initialFormState = {
         Proveedor: "",
         Cliente: "",
-        vin: "",
         Fecha: "",
         Telefono: "",
-        Direccion: "",
         Correo: "",
     };
 
@@ -49,7 +47,7 @@ function ClienteForm({ setDatosCliente }) {
                             name={field}
                             className="mt-1 p-2 block w-full rounded-md border border-slate-300 text-sm shadow-sm placeholder-slate-400
                         focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600
-                        focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+                        focus:invalid:border-pink-500 focus:invalid:ring-pink-500 "
                             value={formData[field]}
                             onChange={handleInputChange}
                         />

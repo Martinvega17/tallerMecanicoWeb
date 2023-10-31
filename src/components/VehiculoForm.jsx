@@ -16,7 +16,7 @@ function VehiculoForm({ setDatosVehiculo }) {
     };
 
     return (
-        <div className="grid grid-cols-2 gap-4 mx-4">
+        <div className="grid grid-cols-2 gap-4 mx-4 pt-[50px]">
             <h2 className="text-lg font-semibold mb-2 col-span-2 text-center">INFORMACION DEL VEHICULO</h2>
 
             <div>
@@ -65,7 +65,7 @@ function VehiculoForm({ setDatosVehiculo }) {
                     </div>
 
                     <div className="mb-4">
-                        <label className="block text-sm font-medium">Capacity in Tons:</label>
+                        <label className="block text-sm font-medium">Kilometraje:</label>
                         <input
                             type="number"
                             name="capacidadton"

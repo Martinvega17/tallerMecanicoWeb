@@ -107,7 +107,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
     );
 
     return (
-        <div className="sm:grid grid-cols-2 sm:grid-cols-2 gap-4 mx-4">
+        <div className="sm:grid grid-cols-2 sm:grid-cols-2 gap-4 mx-4 pt-12">
             <h2 className="text-xl font-semibold mb-2 col-span-2 text-center">
                 DATOS DEL MANTENIMIENTO
             </h2>
@@ -192,7 +192,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
                 {createCheckField("llantaTraseraDer", "Llanta trasera derecha")}
                 {createCheckField("llantaTraseraIz", "Llanta trasera izquierda")}
             </div>
-            <div className="col-span-1">
+            <div className="col-span-2">
                 <legend className="text-center bg-[#333] text-white font-bold p-2">
                     COMENTARIOS O RECOMENDACIONES
                 </legend>
