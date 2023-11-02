@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import ClienteForm from "./components/ClienteForm";
 import VehiculoForm from "./components/VehiculoForm";
 import MantenimientoForm from "./components/MantenimientoForm";
@@ -19,24 +19,22 @@ function App() {
   };
 
   return (
-    <div>
-      <h1 className="text-center text-2xl mt-2 font-bold mb-4">
-        REPORTE DE INSECCION VEHICULAR
-      </h1>
-
-      
-      <ClienteForm setDatosCliente={setDatosCliente} />
-      <VehiculoForm setDatosVehiculo={setDatosVehiculo} />
-      <MantenimientoForm setDatosMantenimiento={setDatosMantenimiento} />
-      <ElaboradoForm setDatosElaborado={setDatosElaborado} />
-
-      <button
-        className="ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md"
-        onClick={generatePDF}
-      >
-        Generate PDF Report
-      </button>
-    </div>
+    <div className="text-center">
+    <h1 className="text-2xl mt-2 font-bold mb-4">REPORTE DE INSPECCIÓN VEHICULAR</h1>
+  
+    <ClienteForm setDatosCliente={setDatosCliente} />
+    <VehiculoForm setDatosVehiculo={setDatosVehiculo} />
+    <MantenimientoForm setDatosMantenimiento={setDatosMantenimiento} />
+    <ElaboradoForm setDatosElaborado={setDatosElaborado} />
+  
+    <button
+      className="mx-auto ml-4 mb-2 h-12 w-40 border rounded-lg py-2 bg-red-600 text-white text-md items-center justify-center hover:bg-red-700"
+      onClick={generatePDF}
+    >
+      Generate PDF Report
+    </button>
+  </div>
+  
   );
 }
 
