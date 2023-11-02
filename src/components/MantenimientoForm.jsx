@@ -69,7 +69,7 @@ function MantenimientoForm({ setDatosMantenimiento }) {
             <label className="text-sm font-medium ml-2" htmlFor={name}>
                 {label}
             </label>
-            <div className="flex items-center mt-0 ml-4">
+            <div className="flex items-center mt-0 ml-auto">
                 <input
                     type="checkbox"
                     className="mt-1 p-2 semaforo verde"
